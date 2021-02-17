@@ -12,7 +12,7 @@ PIP:
 
 # installation ---------------------------------------------------------------------------------
 # Install virtual env
-venv-setup:
+setup:
 	@echo Creating a virtual environment...
 	python3 -m venv virtual_env
 	@echo virtual environment was created!
@@ -20,11 +20,11 @@ venv-setup:
 	PIP install --upgrade pip
 	@echo Setup is complete!
 	@echo Now activate the virtual environment: 'virtual_env/Scripts/activate'
-	@echo after activation type 'make venv-install'
+	@echo after activation type 'make install'
 
 
 # installing application, recomended to run 'make venv-setup' before.
-venv-install:
+install:
 	@echo Installing requirements.txt...
 	PIP install -r requirements.txt
 	@echo setting up the project...
