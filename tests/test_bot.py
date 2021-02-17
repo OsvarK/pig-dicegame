@@ -1,3 +1,6 @@
+import unittest
 from src.bot import Bot
 
-b = Bot()
+
+class TestBot(unittest.TestCase):
+    pass

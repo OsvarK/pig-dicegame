@@ -32,3 +32,11 @@ install:
 	@echo All done, type pig for execution of application.
 
 
+# Test all test files
+test:
+	PYTHON tests/test_bot.py
+	PYTHON tests/test_game.py
+	PYTHON tests/test_player.py
+	PYTHON tests/test_userInterface.py
+
+
