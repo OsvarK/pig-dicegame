@@ -23,13 +23,13 @@ setup:
 	@echo after activation type 'make install'
 
 
-# installing application, recomended to run 'make venv-setup' before.
+# installing application, recomended to run 'make setup' before.
 install:
 	@echo Installing requirements.txt...
 	PIP install -r requirements.txt
-	@echo setting up the project...
+	@echo installing the project... (this step is nessesary to run tests)
 	PIP install .
-	@echo All done, type pig for execution of application.
+	@echo All done, type pig for execution of application or run tests using: 'make test'
 
 
 # Test all test files
