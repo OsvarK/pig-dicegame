@@ -1,17 +1,12 @@
 VENV = virtual_env/Scripts/
 
-# Python executable
 PYTHON:
 	$(venv)python
 
-
-# pip executable
 PIP:
 	PYTHON $(venv)pip
 
-
-# installation ---------------------------------------------------------------------------------
-# Install virtual env
+# Install ----------------------------------------------------
 setup:
 	@echo Creating a virtual environment...
 	python3 -m venv virtual_env
@@ -22,8 +17,6 @@ setup:
 	@echo Now activate the virtual environment: 'virtual_env/Scripts/activate'
 	@echo after activation type 'make install'
 
-
-# installing application, recomended to run 'make setup' before.
 install:
 	@echo Installing requirements.txt...
 	PIP install -r requirements.txt
@@ -31,12 +24,42 @@ install:
 	PIP install .
 	@echo All done, type pig for execution of application or run tests using: 'make test'
 
+# Testing ----------------------------------------------------
+test-unittest:
+	- PYTHON -m unittest discover . "tests/test_*.py"
 
-# Test all test files
-test:
-	PYTHON tests/test_bot.py
-	PYTHON tests/test_game.py
-	PYTHON tests/test_player.py
-	PYTHON tests/test_userInterface.py
+test-coverage:
+	- coverage run -m unittest discover . "tests/test_*.py"
+	- coverage html
+	- coverage report -m
 
+test-pylint:
+	- pylint src
+
+test-flake8:
+	- flake8 src
+
+test-all:
+	@echo --------------------------------------------------------------------------
+	@echo ----------------------------- Running unittest----------------------------
+	@echo --------------------------------------------------------------------------
+	- PYTHON -m unittest discover . "tests/test_*.py"
+	@echo --------------------------------------------------------------------------
+	@echo ----------------------------- Running coverage ---------------------------
+	@echo --------------------------------------------------------------------------
+	- coverage run -m unittest discover . "tests/test_*.py"
+	- coverage html
+	- coverage report -m
+	@echo --------------------------------------------------------------------------
+	@echo ----------------------------- Running pylint -----------------------------
+	@echo --------------------------------------------------------------------------
+	- pylint src
+	@echo --------------------------------------------------------------------------
+	@echo ----------------------------- Running flake8 -----------------------------
+	@echo --------------------------------------------------------------------------
+	- flake8 src
+
+test-lint:
+	- pylint src
+	- flake8 src
 
