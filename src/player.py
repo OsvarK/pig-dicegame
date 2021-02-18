@@ -1,8 +1,24 @@
 # player logic
 class Player:
-    def __init__(self):
-        print("Loaded...")
-        super().__init__()
+    """
+    Class represents a player.
 
-    def test(self):
-        print("Testing!")
+    Methods
+    -------
+        addScore(): int
+            adds score to player, then returns that score
+            return: int
+        getScore():
+            retrive score from player.
+            return: int
+    """
+
+    def __init__(self):
+        self.__score = 0
+
+    def addScore(self, score):
+        self.__score += score
+        return self.getScore()
+
+    def getScore(self):
+        return self.__score
