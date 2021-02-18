@@ -1,4 +1,4 @@
-from UserInterface import UI
+from userInterface import UI
 
 
 class Game:
