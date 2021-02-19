@@ -30,7 +30,7 @@ class Game:
 
     def __init__(self, players):
         """ Constructs the necessary logic needed to run the game """
-        self.__players = players
+        self.players = players
         self.__ui = UserInterface()
         self.__gameIsActive = False
 
@@ -54,7 +54,7 @@ class Game:
                 pass
             else:
                 points = self.humanDiceLoop(player)
-            player.addScore(points)                 # Add score to player.
+            player.score += points                  # Add score to player.
             turnIndex = self.updateTurnIndex()      # Update turn index.
             if self.hasPlayerWon(player):           # Check if player has won.
                 self.GameOver(player)
@@ -98,17 +98,17 @@ class Game:
 
     def hasPlayerWon(self, player):
         """ Checks if player has >= 100 points """
-        return player.getScore() >= 100
+        return player.score >= 100
 
     def updateTurnIndex(self, turnIndex):
         """ Updates the turn index, to keep track on who's turn it is """
-        if turnIndex == (len(self.__players) - 1):
+        if turnIndex == (len(self.players) - 1):
             turnIndex = 0
         else:
             turnIndex += 1
         return turnIndex
 
-    def GameOver(self, player):
+    def gameOver(self, player):
         """ Method that handels logic on game over"""
         self.__gameIsActive = False
         # TODO: Add logic
