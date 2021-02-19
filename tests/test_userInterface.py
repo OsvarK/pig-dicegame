@@ -1,12 +1,12 @@
 import unittest
-from src.human import Human
+from src.userInterface import UserInterface
 
 
 class TestHuman(unittest.TestCase):
 
     def test_throwDiceQuestion(self):
         """ Tests UserInterface:throwDiceQuestion"""
-        ui = Human()
+        ui = UserInterface()
         result = ui.throwDiceQuestion(True)
         self.assertTrue(result in range(-1, 6))
 

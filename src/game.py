@@ -1,4 +1,6 @@
 from src.userInterface import UserInterface
+
+
 class Game:
     """
     Class represents the dice game, pig.
@@ -33,22 +35,34 @@ class Game:
         self.__gameIsActive = False
 
     def startGame(self):
+        """ Starts the game """
         self.__gameIsActive = True
         self.__gameLoop()
 
     def __gameLoop(self):
         """ This fucntion controlls the flow of the game (the game loop) """
+        # Keep track on whos turn it is.
         turnIndex = 0
         while self.__gameIsActive:
-            player = self.__players[turnIndex]      # Refreance current player.
-            points = self.diceThrowLoop()           # player throw dice.
+            # Refreance current player.
+            player = self.__players[turnIndex]
+
+            # Get points from either the player
+            # or the bot, (Maybe do this with if statements isntead?)
+            try:
+                points = self.botDiceLoop()
+            except Exception:
+                pass
+            else:
+                points = self.humanDiceLoop(player)
+
             player.addScore(points)                 # add score to player.
             turnIndex = self.updateTurnIndex()      # update turn index.
             if self.hasPlayerWon(player):           # check if player has won.
                 self.GameOver(player)
                 break
 
-    def diceThrowLoop(self):
+    def humanDiceLoop(self, player):
         """
         This function controlls the flow of the dice loop,
         the players ability to throw dices.
@@ -56,7 +70,8 @@ class Game:
         firstThrow = True
         points = 0
         while True:
-            dice = self.__ui.throwDiceQuestion(firstThrow)
+            # Ask user to throw dice
+            dice = self.__ui.throwDiceQuestion(firstThrow, player)
             firstThrow = False
             if dice == -1:
                 # No dice thrown
@@ -67,6 +82,23 @@ class Game:
                 break
             else:
                 # Append dice number to points pool.
+                points += dice
+        return points
+
+    def botDiceLoop(self, bot):
+        """
+        This function controlls the flow of the dice loop,
+        the bots ability to throw dices.
+        """
+        # TODO: Maybe combine botdice and humandice, to not dry?
+        points = 0
+        for dice in range(len(bot.calculateHowManyThrows())):
+            if dice == -1:
+                break
+            elif dice == 1:
+                points = 0
+                break
+            else:
                 points += dice
         return points
 
@@ -85,4 +117,4 @@ class Game:
     def GameOver(self, player):
         """ Method that handels logic on game over"""
         self.__gameIsActive = False
-        pass
+        # TODO: Add logic

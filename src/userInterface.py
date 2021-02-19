@@ -1,7 +1,4 @@
-from src.player import Player
-
-
-class Human(Player):
+class UserInterface():
     """
     This class controlls the input and output to the player.
 
