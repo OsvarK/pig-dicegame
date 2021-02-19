@@ -46,7 +46,6 @@ class Game:
         while self.__gameIsActive:
             # Refreance current player.
             player = self.__players[turnIndex]
-
             # Get points from either the player
             # or the bot, (Maybe do this with if statements isntead?)
             try:
@@ -55,10 +54,9 @@ class Game:
                 pass
             else:
                 points = self.humanDiceLoop(player)
-
-            player.addScore(points)                 # add score to player.
-            turnIndex = self.updateTurnIndex()      # update turn index.
-            if self.hasPlayerWon(player):           # check if player has won.
+            player.addScore(points)                 # Add score to player.
+            turnIndex = self.updateTurnIndex()      # Update turn index.
+            if self.hasPlayerWon(player):           # Check if player has won.
                 self.GameOver(player)
                 break
 
@@ -71,17 +69,14 @@ class Game:
         points = 0
         while True:
             # Ask user to throw dice
-            dice = self.__ui.throwDiceQuestion(firstThrow, player)
+            if not self.__ui.throwDiceQuestion(firstThrow, player):
+                break  # Dont want to throw dice
+            dice = player.throwDice()
             firstThrow = False
-            if dice == -1:
-                # No dice thrown
-                break
-            elif dice == 1:
-                # Dice equals 1, remove all points & end turn.
+            if dice == 1:   # Dice landed one 1
                 points = 0
                 break
             else:
-                # Append dice number to points pool.
                 points += dice
         return points
 
@@ -90,12 +85,11 @@ class Game:
         This function controlls the flow of the dice loop,
         the bots ability to throw dices.
         """
-        # TODO: Maybe combine botdice and humandice, to not dry?
+        # TODO: is botDice & humanDice dry? can we fix?
         points = 0
-        for dice in range(len(bot.calculateHowManyThrows())):
-            if dice == -1:
-                break
-            elif dice == 1:
+        for i in range(len(bot.calculateHowManyThrows())):
+            dice = bot.throwDice()
+            if dice == 1:   # Dice landed one 1
                 points = 0
                 break
             else:

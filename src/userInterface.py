@@ -12,17 +12,9 @@ class UserInterface():
         super().__init__()
 
     def throwDiceQuestion(self, firstTime):
-        """ Asks the user to throw dice or not
+        # TODO: Ask if player wants to throw dice
+        # return, true / false
+        return True
 
-            Attribute:
-                firsTime : bool
-                determine if its the first time
-                this question has been asked to this user.
-
-            Return : int
-        """
-
-        # Todo: return dice throw, also check if player want to throw dice.
-        # If player dont want to throw dice, return -1
-
-        return 1
+    def mainMenu(self):
+        pass
