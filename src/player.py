@@ -15,9 +15,10 @@ class Player(object):
             throws dice.
     """
 
-    def __init__(self):
+    def __init__(self, username):
         super.__init__()
         self.__score = 0
+        self.username = username
 
     def addScore(self, score):
         self.__score += score

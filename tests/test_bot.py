@@ -5,7 +5,7 @@ from src.bot import Bot
 class TestBot(unittest.TestCase):
     def calculateHowManyThrows(self):
         """Tests bbot:calculateHowManyThrows function"""
-        bot = Bot()
+        bot = Bot(None)
         for x in range(1, 20):
             y = bot.calculateHowManyThrows()
             self.assertTrue(y >= 1)

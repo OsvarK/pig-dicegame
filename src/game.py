@@ -24,7 +24,7 @@ class Game:
             Determine if player has won.
         updateTurnIndex(int): int
             Determines whos turn it is, represented by an index.
-        GameOver():
+        gameOver():
             Method to end game.
     """
 
@@ -108,7 +108,7 @@ class Game:
             turnIndex += 1
         return turnIndex
 
-    def gameOver(self, player):
+    def GameOver(self, player):
         """ Method that handels logic on game over"""
         self.__gameIsActive = False
         # TODO: Add logic

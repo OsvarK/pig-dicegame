@@ -8,7 +8,7 @@ class TestGame(unittest.TestCase):
     def test_hasPlayerWon(self):
         """Tests game:hasPlayerWon function"""
         game = Game({1, 2, 3, 4})
-        player = Player()
+        player = Player(None)
         self.assertFalse(game.hasPlayerWon(player))
         player.addScore(99)
         self.assertFalse(game.hasPlayerWon(player))
