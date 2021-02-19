@@ -31,12 +31,12 @@ class Game:
     def __gameLoop(self):
         """ This fucntion controlls the flow of the game (the game loop) """
         turnIndex = 0
-        while(self.__gameIsActive):
+        while self.__gameIsActive:
             player = self.__players[turnIndex]      # Refreance current player.
             points = self.diceThrowLoop()           # player throw dice.
             player.addScore(points)                 # add score to player.
             turnIndex = self.updateTurnIndex()      # update turn index.
-            if self.hasPlayerWon(player):         # check if player has won.
+            if self.hasPlayerWon(player):           # check if player has won.
                 self.GameOver(player)
                 break
 
@@ -47,7 +47,7 @@ class Game:
         """
         firstThrow = True
         points = 0
-        while(True):
+        while True:
             dice = self.__ui.throwDiceQuestion(firstThrow)
             firstThrow = False
             if dice == -1:
