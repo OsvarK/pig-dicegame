@@ -1,19 +1,22 @@
-# player logic
-class Player:
+import random
+
+
+class Player(object):
     """
     Class represents a player.
 
     Methods
     -------
-        addScore(): int
+        addScore(int): int
             adds score to player, then returns that score
-            return: int
-        getScore():
+        getScore(): int
             retrive score from player.
-            return: int
+        throwDice(): int
+            throws dice.
     """
 
     def __init__(self):
+        super.__init__()
         self.__score = 0
 
     def addScore(self, score):
@@ -22,3 +25,6 @@ class Player:
 
     def getScore(self):
         return self.__score
+
+    def throwDice(self):
+        return random.Randomint(1, 6)

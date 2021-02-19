@@ -1,16 +1,18 @@
-# Menus, outputs osv
-class UserInterface:
+from src.player import Player
+
+
+class Human(Player):
     """
     This class controlls the input and output to the player.
 
     Methods
     -------
-        throwDiceQuestion():
+        throwDiceQuestion(): int
             Asks the user to throw a dice
     """
 
     def __init__(self):
-        print("Loaded...")
+        super().__init__()
 
     def throwDiceQuestion(self, firstTime):
         """ Asks the user to throw dice or not

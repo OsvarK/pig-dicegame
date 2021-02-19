@@ -1,9 +1,21 @@
 import random
+from src.player import Player
 
 
-class Bot:
+class Bot(Player):
+    """
+    Class represents a a bot that is beeing
+    inheritanced by the Player class.
+
+    Methods
+    -------
+        calculateHowManyThrows(): int
+            calculate how many thros the bot are willing to do.
+    """
+
     def __init__(self):
-        pass
+        super().__init__()
+        self.calculateHowManyThrows()
 
     def calculateHowManyThrows(self):
         """Decide how many throws the bot wants to do"""

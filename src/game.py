@@ -1,6 +1,4 @@
 from src.userInterface import UserInterface
-
-
 class Game:
     """
     Class represents the dice game, pig.
@@ -15,17 +13,27 @@ class Game:
     Methods
     -------
         gameLoop():
-            This method is the flow of the game.
-            This method is called on class construction.
+            This method controlls the flow of the game.
+        startGame():
+            This method starts the game.
+        diceThrowLoop(): int
+            This method controlls the flow of dice loop of the game.
+        hasPlayerWon(Player): bool
+            Determine if player has won.
+        updateTurnIndex(int): int
+            Determines whos turn it is, represented by an index.
+        GameOver():
+            Method to end game.
     """
 
     def __init__(self, players):
         """ Constructs the necessary logic needed to run the game """
         self.__players = players
         self.__ui = UserInterface()
-        self.__gameIsActive = True
+        self.__gameIsActive = False
 
     def startGame(self):
+        self.__gameIsActive = True
         self.__gameLoop()
 
     def __gameLoop(self):
