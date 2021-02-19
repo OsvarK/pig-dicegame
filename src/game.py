@@ -108,7 +108,7 @@ class Game:
             turnIndex += 1
         return turnIndex
 
-    def GameOver(self, player):
+    def gameOver(self, player):
         """ Method that handels logic on game over"""
         self.__gameIsActive = False
         # TODO: Add logic
