@@ -5,15 +5,6 @@ from pigdicegame.game import Game
 class Player(object):
     """
     Class represents a player.
-
-    Methods
-    -------
-        addScore(int): int
-            adds score to player, then returns that score
-        getScore(): int
-            retrive score from player.
-        throwDice(): int
-            throws dice.
     """
 
     def __init__(self, username):
