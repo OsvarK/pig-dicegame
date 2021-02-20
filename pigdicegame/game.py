@@ -28,8 +28,7 @@ class Game:
         """Retrive singletoon of this class"""
         if Game.__instance is None:
             Game()
-        else:
-            return Game.__instance
+        return Game.__instance
 
     def __init__(self):
         """ Constructs the necessary logic needed to run the game """
