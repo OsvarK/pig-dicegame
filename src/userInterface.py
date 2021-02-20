@@ -26,7 +26,7 @@ class UserInterface():
         """
         # TODO: Make it possible to throw dice
         # and the logic to return points
-        # return the points
+        # return the points as a list
         return True
 
     def displayMainMenu(self):
