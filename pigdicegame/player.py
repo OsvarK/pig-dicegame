@@ -26,8 +26,9 @@ class Player(object):
 
     def throwDice(self):
         """Throws the dice"""
-        Game.getInstance().ui.displayDiceThrow()
-        return random.randint(1, 6)
+        dice = random.randint(1, 6)
+        Game.getInstance().ui.displayDiceThrow(self, dice)
+        return dice
 
     def loadData(self):
         """Fetch data from storage"""
