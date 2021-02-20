@@ -21,28 +21,34 @@ class Player(object):
         self.username = username
         self.wins = 0
         self.higestScoreInOneTurn = []
-        self.fastestWin = []
+        self.fastestWin = 0
 
     def throwDice(self):
         """Throws the dice"""
         return random.Randomint(1, 6)
 
-    def fetchData(self):
+    def loadData(self):
         """Fetch data from storage"""
+        # TODO: Get data from storage, and update this variables
         self.wins = 0
         self.higestScoreInOneTurn = []
         self.fastestWin = []
-        pass
+
+    def saveData(self):
+        """Save data to storage"""
+        # TODO: save data to storage
 
     def ishigestScoreInOneTurn(self, newHigescore):
         """Check if this is the new higescore in one turn"""
-        pass
+        if newHigescore > sum(self.higestScoreInOneTurn):
+            self.higestScoreInOneTurn = newHigescore
 
     def isfastestWin(self, onTurn):
         """Check if this is the fastes win"""
-        pass
+        if onTurn < self.fastestWin:
+            self.fastestWin = onTurn
 
-    def playerWon(self, onTurn):
+    def iWin(self, onTurn):
         """This player won the game"""
         self.win += 1
         self.isfastestWin(onTurn)

@@ -1,5 +1,5 @@
 import unittest
-from src.game import Game
+# from src.game import Game
 
 
 class TestGame(unittest.TestCase):
@@ -8,14 +8,6 @@ class TestGame(unittest.TestCase):
         pass
 
     # add the gameloop to test? but how
-
-    def test_updateTurnIndex(self):
-        """Tests game:updateTurnIndex function"""
-        game = Game({1, 2, 3, 4})
-        self.assertEqual(game.updateTurnIndex(0), 1)
-        self.assertEqual(game.updateTurnIndex(1), 2)
-        self.assertEqual(game.updateTurnIndex(2), 3)
-        self.assertEqual(game.updateTurnIndex(3), 0)
 
     def test_gameOver(self):
         pass

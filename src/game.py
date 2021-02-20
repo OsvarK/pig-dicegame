@@ -38,36 +38,42 @@ class Game:
         """ This fucntion controlls the flow of the game (the game loop) """
         # Keep track on whos turn it is.
         turnIndex = 0
+        oneTurnCycle = 0
         while self.__gameIsActive:
 
             # Refreance current player.
             player = self.__players[turnIndex]
             self.__ui.DisplayWhosTurn(player)
 
-            # Get points from either the player
-            # or the bot, (Maybe do this with if statements isntead?)
+            # Get points from either the player or the bot
+            # (Maybe do this with if statements isntead?)
             try:
+                # Bot throw dice
                 points = self.botDiceLoop(self.__ui)
             except Exception:
                 pass
             else:
-                points = self.__ui.ThrowDiceLoop(player)
+                # Player throw dice
+                pointsAccumulated = self.__ui.ThrowDiceLoop(player)
+                player.ishigestScoreInOneTurn(pointsAccumulated)
+                points = sum(pointsAccumulated)
 
-            player.score += points                  # Add score to player.
-            turnIndex = self.updateTurnIndex()      # Update turn index.
-            if player.score >= 100:                 # Check if player has won.
+            # Add score to player.
+            player.score += points
+
+            # Update turn
+            if turnIndex == (len(self.players) - 1):
+                turnIndex = 0
+                oneTurnCycle += 1
+            else:
+                turnIndex += 1
+
+            # Check if player has won.
+            if player.score >= 100:
                 self.GameOver(player)
                 break
 
-    def updateTurnIndex(self, turnIndex):
-        """ Updates the turn index, to keep track on who's turn it is """
-        if turnIndex == (len(self.players) - 1):
-            turnIndex = 0
-        else:
-            turnIndex += 1
-        return turnIndex
-
-    def gameOver(self, player):
+    def gameOver(self, player, turn):
         """ Method that handels logic on game over"""
         self.__gameIsActive = False
-        # TODO: Add logic
+        player.iWin()
