@@ -13,6 +13,6 @@ class TestGame(unittest.TestCase):
         pass
 
 
-# Run unitest, can also be runnned by 'py -m unititest test_game.py'
+# Run by typing: py <filename>
 if __name__ == '__main__':
     unittest.main()

@@ -25,6 +25,6 @@ class TestBot(unittest.TestCase):
             self.assertTrue(isinstance(result, str))
 
 
-# Run unitest, can also be runnned by 'py -m unititest test_boy.py'
+# Run by typing: py <filename>
 if __name__ == '__main__':
     unittest.main()

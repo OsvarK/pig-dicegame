@@ -2,7 +2,7 @@ import unittest
 from src.userInterface import UserInterface
 
 
-class TestHuman(unittest.TestCase):
+class TestUserInterface(unittest.TestCase):
 
     def test_throwDiceQuestion(self):
         """ Tests UserInterface:throwDiceQuestion"""
@@ -11,6 +11,6 @@ class TestHuman(unittest.TestCase):
         self.assertTrue(result in range(-1, 6))
 
 
-# Run unitest, can also be runnned by 'py -m unititest test_userInterface.py'
+# Run by typing: py <filename>
 if __name__ == '__main__':
     unittest.main()
