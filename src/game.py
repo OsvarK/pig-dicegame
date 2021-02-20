@@ -38,7 +38,7 @@ class Game:
         """ This fucntion controlls the flow of the game (the game loop) """
         # Keep track on whos turn it is.
         turnIndex = 0
-        oneTurnCycle = 0
+        turnCycle = 0
         while self.__gameIsActive:
 
             # Refreance current player.
@@ -64,7 +64,7 @@ class Game:
             # Update turn
             if turnIndex == (len(self.players) - 1):
                 turnIndex = 0
-                oneTurnCycle += 1
+                turnCycle += 1
             else:
                 turnIndex += 1
 
