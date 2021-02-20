@@ -5,6 +5,11 @@ from src.player import Player
 
 class TestGame(unittest.TestCase):
 
+    def test_startGame(self):
+        pass
+
+    # add the gameloop to test? but how
+
     def test_hasPlayerWon(self):
         """Tests game:hasPlayerWon function"""
         game = Game({1, 2, 3, 4})
@@ -22,6 +27,9 @@ class TestGame(unittest.TestCase):
         self.assertEqual(game.updateTurnIndex(1), 2)
         self.assertEqual(game.updateTurnIndex(2), 3)
         self.assertEqual(game.updateTurnIndex(3), 0)
+
+    def test_gameOver(self):
+        pass
 
 
 # Run unitest, can also be runnned by 'py -m unititest test_game.py'
