@@ -11,22 +11,27 @@ class UserInterface():
     def __init__(self):
         super().__init__()
 
-    def DisplayThrowDiceQuestion(self, firstTime):
-        # TODO: Ask if player wants to throw dice
-        # return, true / false
+    def throwDiceLoop(self, player):
+        """
+        This function controlls the flow of the dice loop,
+        the players ability to throw dices.
+        """
+        # TODO: Make it possible to throw dice
+        # and the logic to return points
+        # return the points
         return True
 
-    def DisplayMainMenu(self):
+    def displayMainMenu(self):
         """Menu"""
         # Huvudmeny
         pass
 
-    def DisplayGameStartup(self):
+    def displayGameStartup(self):
         """Maybe some startup stuffs"""
         # set how many players and bots osv...
         pass
 
-    def DisplayWhosTurn(self, player):
+    def displayWhosTurn(self, player):
         """Display whos turn it is"""
         # Varje turn så måste vi veta vems turn det är
         pass

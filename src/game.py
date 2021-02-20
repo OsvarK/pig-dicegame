@@ -46,60 +46,25 @@ class Game:
         # Keep track on whos turn it is.
         turnIndex = 0
         while self.__gameIsActive:
+
             # Refreance current player.
             player = self.__players[turnIndex]
             self.__ui.DisplayWhosTurn(player)
+
             # Get points from either the player
             # or the bot, (Maybe do this with if statements isntead?)
             try:
-                points = self.botDiceLoop()
+                points = self.botDiceLoop(self.__ui)
             except Exception:
                 pass
             else:
-                points = self.humanDiceLoop(player)
+                points = self.__ui.ThrowDiceLoop(player)
+
             player.score += points                  # Add score to player.
             turnIndex = self.updateTurnIndex()      # Update turn index.
             if self.hasPlayerWon(player):           # Check if player has won.
                 self.GameOver(player)
                 break
-
-    def humanDiceLoop(self, player):
-        """
-        This function controlls the flow of the dice loop,
-        the players ability to throw dices.
-        """
-        firstThrow = True
-        points = 0
-        while True:
-            # Ask user to throw dice
-            if not self.__ui.throwDiceQuestion(firstThrow, player):
-                break  # Dont want to throw dice
-            dice = player.throwDice()
-            self.__ui.displayDiceThrow(player, dice)
-            firstThrow = False
-            if dice == 1:   # Dice landed one 1
-                points = 0
-                break
-            else:
-                points += dice
-        return points
-
-    def botDiceLoop(self, bot):
-        """
-        This function controlls the flow of the dice loop,
-        the bots ability to throw dices.
-        """
-        # TODO: is botDice & humanDice dry? can we fix?
-        points = 0
-        for i in range(len(bot.calculateHowManyThrows())):
-            dice = bot.throwDice()
-            self.__ui.displayDiceThrow(bot, dice)
-            if dice == 1:   # Dice landed one 1
-                points = 0
-                break
-            else:
-                points += dice
-        return points
 
     def hasPlayerWon(self, player):
         """ Checks if player has >= 100 points """

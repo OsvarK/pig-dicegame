@@ -28,3 +28,16 @@ class Bot(Player):
             else:
                 break
         return howManyThrows
+
+    def getDiceThrows(self, ui):
+        """
+        Bot throws dices and returns points
+        """
+        points = 0
+        for i in range(len(self.calculateHowManyThrows())):
+            dice = self.throwDice()
+            ui.displayDiceThrow(self, dice)
+            if dice == 1:   # Dice landed one 1, return 0 points
+                return 0
+            points += dice
+        return points
