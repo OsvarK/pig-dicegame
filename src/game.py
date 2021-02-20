@@ -57,13 +57,9 @@ class Game:
 
             player.score += points                  # Add score to player.
             turnIndex = self.updateTurnIndex()      # Update turn index.
-            if self.hasPlayerWon(player):           # Check if player has won.
+            if player.score >= 100:                 # Check if player has won.
                 self.GameOver(player)
                 break
-
-    def hasPlayerWon(self, player):
-        """ Checks if player has >= 100 points """
-        return player.score >= 100
 
     def updateTurnIndex(self, turnIndex):
         """ Updates the turn index, to keep track on who's turn it is """

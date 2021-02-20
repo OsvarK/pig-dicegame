@@ -10,16 +10,6 @@ class TestGame(unittest.TestCase):
 
     # add the gameloop to test? but how
 
-    def test_hasPlayerWon(self):
-        """Tests game:hasPlayerWon function"""
-        game = Game({1, 2, 3, 4})
-        player = Player(None)
-        self.assertFalse(game.hasPlayerWon(player))
-        player.addScore(99)
-        self.assertFalse(game.hasPlayerWon(player))
-        player.addScore(1)
-        self.assertTrue(game.hasPlayerWon(player))
-
     def test_updateTurnIndex(self):
         """Tests game:updateTurnIndex function"""
         game = Game({1, 2, 3, 4})
