@@ -6,17 +6,11 @@ class Game:
     Class represents the dice game, pig.
     This class controlls the logic and the flow of the game.
 
-    Attributes:
-    -----------
-        players : list of Player Classes
-            A list of Player classes.
-            List lenght: 1-4
-
     Methods
     -------
         gameLoop():
             Method thats controlls the flow of the game.
-        startGame():
+        startGame(Players):
             Method to start the game.
         humanDiceLoop(): int
             This method controlls the flow of dice for the human.
@@ -30,14 +24,15 @@ class Game:
             Method to end game.
     """
 
-    def __init__(self, players):
+    def __init__(self):
         """ Constructs the necessary logic needed to run the game """
-        self.players = players
+        self.players = None
         self.__ui = UserInterface()
         self.__gameIsActive = False
 
-    def startGame(self):
-        """ Starts the game """
+    def startGame(self, Players):
+        """ Starts the game, param = list of players """
+        self.players = Players
         self.__gameIsActive = True
         self.__gameLoop()
 
