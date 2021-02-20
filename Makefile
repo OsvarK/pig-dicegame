@@ -43,11 +43,11 @@ test:
 	@echo --------------------------------------------------------------------------
 	@echo ----------------------------- Running unittest----------------------------
 	@echo --------------------------------------------------------------------------
-	- PYTHON -m unittest discover . "tests/test_*.py"
+	- PYTHON -m unittest discover tests
 	@echo --------------------------------------------------------------------------
 	@echo ----------------------------- Running coverage ---------------------------
 	@echo --------------------------------------------------------------------------
-	- coverage run -m unittest discover . "tests/test_*.py"
+	- coverage run -m unittest discover tests
 	- coverage html
 	- coverage report -m
 	@echo --------------------------------------------------------------------------
@@ -65,6 +65,6 @@ lint:
 
 # Helpers -----------------------------------------------------------------------------
 cleanup:
-	rmdir /Q /S htmlcov
-	del .\.coverage
-	del .\*\__pycache__
+	- rmdir /Q /S htmlcov
+	- del .\.coverage
+	- del .\*\__pycache__
