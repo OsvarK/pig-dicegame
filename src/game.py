@@ -16,8 +16,6 @@ class Game:
             This method controlls the flow of dice for the human.
         botDiceLoop(): int
             This method controlls the flow of dice for the bot.
-        hasPlayerWon(Player): bool
-            Determine if player has won.
         updateTurnIndex(int): int
             Determines whos turn it is, represented by an index.
         gameOver():
