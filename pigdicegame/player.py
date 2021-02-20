@@ -1,4 +1,5 @@
 import random
+from pigdicegame.game import Game
 
 
 class Player(object):
@@ -25,6 +26,7 @@ class Player(object):
 
     def throwDice(self):
         """Throws the dice"""
+        Game.getInstance().ui.displayDiceThrow()
         return random.randint(1, 6)
 
     def loadData(self):

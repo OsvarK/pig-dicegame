@@ -21,11 +21,24 @@ class Game:
         gameOver():
             Method to end game.
     """
+    __instance = None
+
+    @staticmethod
+    def getInstance():
+        """Retrive singletoon of this class"""
+        if Game.__instance is None:
+            Game()
+        else:
+            return Game.__instance
 
     def __init__(self):
         """ Constructs the necessary logic needed to run the game """
+        # Create singleton
+        if Game.__instance is None:
+            Game.__instance = self
+        # Set varaiables
         self.players = None
-        self.__ui = UserInterface()
+        self.ui = UserInterface()
         self.__gameIsActive = False
 
     def startGame(self, Players):
@@ -43,18 +56,18 @@ class Game:
 
             # Refreance current player.
             player = self.__players[turnIndex]
-            self.__ui.DisplayWhosTurn(player)
+            self.ui.DisplayWhosTurn(player)
 
             # Get points from either the player or the bot
             # (Maybe do this with if statements isntead?)
             try:
                 # Bot throw dice
-                points = self.botDiceLoop(self.__ui)
+                points = self.botDiceLoop(self.ui)
             except Exception:
                 pass
             else:
                 # Player throw dice
-                pointsAccumulated = self.__ui.ThrowDiceLoop(player)
+                pointsAccumulated = self.ui.ThrowDiceLoop(player)
                 player.ishigestScoreInOneTurn(pointsAccumulated)
                 points = sum(pointsAccumulated)
 
