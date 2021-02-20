@@ -1,13 +1,15 @@
 import unittest
 from pigdicegame.userInterface import UserInterface
+from pigdicegame.player import Player
 
 
 class TestUserInterface(unittest.TestCase):
 
-    def test_throwDiceQuestion(self):
-        """ Tests UserInterface:throwDiceQuestion"""
+    def throwDiceLoop(self):
+        """ Tests UserInterface:throwDiceLoop"""
         ui = UserInterface()
-        result = ui.throwDiceQuestion(True)
+        player = Player()
+        result = ui.throwDiceLoop(player)
         self.assertTrue(result in range(-1, 6))
 
 
