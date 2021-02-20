@@ -48,6 +48,7 @@ class Game:
         while self.__gameIsActive:
             # Refreance current player.
             player = self.__players[turnIndex]
+            self.__ui.DisplayWhosTurn(player)
             # Get points from either the player
             # or the bot, (Maybe do this with if statements isntead?)
             try:
@@ -74,6 +75,7 @@ class Game:
             if not self.__ui.throwDiceQuestion(firstThrow, player):
                 break  # Dont want to throw dice
             dice = player.throwDice()
+            self.__ui.displayDiceThrow(player, dice)
             firstThrow = False
             if dice == 1:   # Dice landed one 1
                 points = 0
@@ -91,6 +93,7 @@ class Game:
         points = 0
         for i in range(len(bot.calculateHowManyThrows())):
             dice = bot.throwDice()
+            self.__ui.displayDiceThrow(bot, dice)
             if dice == 1:   # Dice landed one 1
                 points = 0
                 break
