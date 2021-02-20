@@ -43,7 +43,7 @@ class Game:
             if isinstance(player, Bot):
                 points = self.botDiceLoop(self.ui)
             else:
-                pointsAccumulated = self.ui.ThrowDiceLoop(player)
+                pointsAccumulated = self.ui.throwDiceLoop(player)
                 player.ishigestScoreInOneTurn(pointsAccumulated)
                 points = sum(pointsAccumulated)
             player.score += points
