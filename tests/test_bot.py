@@ -6,7 +6,7 @@ class TestBot(unittest.TestCase):
 
     def test_calculateHowManyThrows(self):
         """Tests bot:calculateHowManyThrows function"""
-        bot = Bot(None)
+        bot = Bot()
         for x in range(1, 20):
             y = bot.calculateHowManyThrows()
             self.assertTrue(y >= 1)
@@ -15,7 +15,14 @@ class TestBot(unittest.TestCase):
         """Tests bot:getDiceThrows function"""
         b = Bot()
         for i in range(0, 20):
-            self.assertTrue(b.getDiceThrows(None) > 1)
+            self.assertTrue(b.getDiceThrows(None) >= 0)
+
+    def test_getRandomBotName(self):
+        """Tests bot:getRandomBotName function"""
+        b = Bot()
+        for i in range(0, 20):
+            result = b.getRandomBotName()
+            self.assertTrue(isinstance(result, str))
 
 
 # Run unitest, can also be runnned by 'py -m unititest test_boy.py'

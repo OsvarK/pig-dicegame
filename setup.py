@@ -9,6 +9,9 @@ setup(
     # private link, but good practice.
     url='https://github.com/OsvarK/pig-dicegame',
     packages=find_packages(),
+    package_data={
+        '': ['*.txt']
+    },
     entry_points={
         'console_scripts': [
             'pig = src.driver:main'

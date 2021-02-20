@@ -1,4 +1,5 @@
 import random
+import os
 from src.player import Player
 
 
@@ -14,7 +15,8 @@ class Bot(Player):
     """
 
     def __init__(self):
-        super().__init__()
+        super(Bot).__init__()
+        self.username = self.getRandomBotName()
         self.calculateHowManyThrows()
 
     def calculateHowManyThrows(self):
@@ -32,7 +34,7 @@ class Bot(Player):
     def getDiceThrows(self, ui):
         """ Bot throws dices and return the points, (arg can be None)"""
         points = 0
-        for i in range(len(self.calculateHowManyThrows())):
+        for i in range(self.calculateHowManyThrows()):
             dice = self.throwDice()
             if ui is not None:
                 ui.displayDiceThrow(self, dice)
@@ -40,3 +42,13 @@ class Bot(Player):
                 return 0
             points += dice
         return points
+
+    def getRandomBotName(self):
+        """ Retrive a random bot name """
+        try:
+            CURR_DIR = os.path.dirname(os.path.realpath(__file__))
+            with open(CURR_DIR + "\\resources\\botnames.txt", "r") as file:
+                names = file.readlines()
+                return "[Bot] " + names[random.randint(0, len(names) - 1)]
+        except FileNotFoundError:
+            return "[Bot] Unknown"
