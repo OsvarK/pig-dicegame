@@ -16,8 +16,10 @@ class Bot(Player):
 
     def __init__(self):
         super(Bot).__init__()
-        self.username = self.getRandomBotName()
-        self.calculateHowManyThrows()
+        self.username = self.getRandomBotName(
+            os.path.dirname(os.path.realpath(__file__)) +
+            "\\resources\\botnames.txt"
+        )
 
     def calculateHowManyThrows(self):
         """Decide how many throws the bot wants to do"""
@@ -40,12 +42,11 @@ class Bot(Player):
             points += dice
         return points
 
-    def getRandomBotName(self):
+    def getRandomBotName(self, path):
         """ Retrive a random bot name """
         try:
-            CURR_DIR = os.path.dirname(os.path.realpath(__file__))
-            with open(CURR_DIR + "\\resources\\botnames.txt", "r") as file:
+            with open(path, "r") as file:
                 names = file.readlines()
                 return "[Bot] " + names[random.randint(0, len(names) - 1)]
         except FileNotFoundError:
-            return "[Bot] Unknown"
+            raise FileNotFoundError

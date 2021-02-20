@@ -1,4 +1,5 @@
 import unittest
+import os
 from pigdicegame.bot import Bot
 
 
@@ -20,9 +21,11 @@ class TestBot(unittest.TestCase):
     def test_getRandomBotName(self):
         """Tests bot:getRandomBotName function"""
         b = Bot()
+        PATH = os.path.dirname(os.path.realpath(__file__))
+        with self.assertRaises(FileNotFoundError):
+            b.getRandomBotName(PATH + "\\resources\\namebotsss.txt")
         for i in range(0, 20):
-            result = b.getRandomBotName()
-            self.assertTrue(isinstance(result, str))
+            self.assertTrue(isinstance(PATH + "\\resources\\botnames.txt", str))
 
 
 # Run by typing: py <filename>
