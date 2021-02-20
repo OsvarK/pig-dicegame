@@ -22,7 +22,7 @@ install:
 	PIP install -r requirements.txt
 	@echo installing the project... (this step is nessesary to run tests)
 	PIP install .
-	@echo All done, type pig for execution of application or run tests using: 'make test-all'
+	@echo All done, type pig for execution of application or run make commands for testing.
 
 # Testing ----------------------------------------------------
 unittest:
