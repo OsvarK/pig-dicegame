@@ -1,4 +1,4 @@
-VENV = virtual_env/Scripts/
+VENV = .venv/Scripts/
 
 PYTHON:
 	$(venv)python
@@ -9,12 +9,12 @@ PIP:
 # Install ----------------------------------------------------
 setup:
 	@echo Creating a virtual environment...
-	python3 -m venv virtual_env
+	python3 -m venv .venv
 	@echo virtual environment was created!
 	@echo Uppgrading pip...
 	PIP install --upgrade pip
 	@echo Setup is complete!
-	@echo Now activate the virtual environment: 'virtual_env/Scripts/activate'
+	@echo Now activate the virtual environment: '.venv/Scripts/activate'
 	@echo after activation type 'make install'
 
 install:
@@ -22,24 +22,24 @@ install:
 	PIP install -r requirements.txt
 	@echo installing the project... (this step is nessesary to run tests)
 	PIP install .
-	@echo All done, type pig for execution of application or run tests using: 'make test'
+	@echo All done, type pig for execution of application or run tests using: 'make test-all'
 
 # Testing ----------------------------------------------------
-test-unittest:
-	- PYTHON -m unittest discover . "tests/test_*.py"
+unittest:
+	- PYTHON -m unittest discover tests
 
-test-coverage:
-	- coverage run -m unittest discover . "tests/test_*.py"
+coverage:
+	- coverage run -m unittest discover tests
 	- coverage html
 	- coverage report -m
 
-test-pylint:
+pylint:
 	- pylint pigdicegame
 
-test-flake8:
+flake8:
 	- flake8 pigdicegame
 
-test-all:
+test:
 	@echo --------------------------------------------------------------------------
 	@echo ----------------------------- Running unittest----------------------------
 	@echo --------------------------------------------------------------------------
@@ -59,7 +59,12 @@ test-all:
 	@echo --------------------------------------------------------------------------
 	- flake8 pigdicegame
 
-test-lint:
+lint:
 	- pylint pigdicegame
 	- flake8 pigdicegame
 
+# Helpers -----------------------------------------------------------------------------
+cleanup:
+	rmdir /Q /S htmlcov
+	del .\.coverage
+	del .\*\__pycache__
