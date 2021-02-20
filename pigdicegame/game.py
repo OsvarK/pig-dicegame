@@ -1,91 +1,64 @@
 from pigdicegame.userInterface import UserInterface
+from pigdicegame.bot import Bot
 
 
 class Game:
     """
     Class represents the dice game, pig.
     This class controlls the logic and the flow of the game.
-
-    Methods
-    -------
-        gameLoop():
-            Method thats controlls the flow of the game.
-        startGame(Players):
-            Method to start the game.
-        humanDiceLoop(): int
-            This method controlls the flow of dice for the human.
-        botDiceLoop(): int
-            This method controlls the flow of dice for the bot.
-        updateTurnIndex(int): int
-            Determines whos turn it is, represented by an index.
-        gameOver():
-            Method to end game.
     """
     __instance = None
 
     @staticmethod
     def getInstance():
-        """Retrive singletoon of this class"""
+        """Retrives the singletoon of this class.
+        If there is no singleton, create one
+        """
         if Game.__instance is None:
             Game()
         return Game.__instance
 
     def __init__(self):
-        """ Constructs the necessary logic needed to run the game """
-        # Create singleton
+        """Class constructor, set singleton and default variables"""
         if Game.__instance is None:
             Game.__instance = self
-        # Set varaiables
-        self.players = None
         self.ui = UserInterface()
-        self.__gameIsActive = False
 
-    def startGame(self, Players):
-        """ Starts the game, param = list of players """
-        self.players = Players
-        self.__gameIsActive = True
-        self.__gameLoop()
+    def startGame(self, players):
+        """Takes list of players and starts the gameloop.
+        Returns false if game was not able to be created
+        """
+        if len(players) > 1:
+            self.__gameLoop(players)
+            return True
+        return False
 
-    def __gameLoop(self):
-        """ This fucntion controlls the flow of the game (the game loop) """
-        # Keep track on whos turn it is.
-        turnIndex = 0
+    def __gameLoop(self, players):
+        """This fucntion controlls the flow of the game (the game loop)"""
+        playerIndex = 0
         turnCycle = 0
-        while self.__gameIsActive:
-
-            # Refreance current player.
-            player = self.__players[turnIndex]
+        while True:
+            player = players[playerIndex]
             self.ui.DisplayWhosTurn(player)
-
-            # Get points from either the player or the bot
-            # (Maybe do this with if statements isntead?)
-            try:
-                # Bot throw dice
+            if isinstance(player, Bot):
                 points = self.botDiceLoop(self.ui)
-            except Exception:
-                pass
             else:
-                # Player throw dice
                 pointsAccumulated = self.ui.ThrowDiceLoop(player)
                 player.ishigestScoreInOneTurn(pointsAccumulated)
                 points = sum(pointsAccumulated)
-
-            # Add score to player.
             player.score += points
-
-            # Update turn
-            if turnIndex == (len(self.players) - 1):
-                turnIndex = 0
+            if playerIndex == (len(players) - 1):
+                playerIndex = 0
                 turnCycle += 1
             else:
-                turnIndex += 1
-
-            # Check if player has won.
+                playerIndex += 1
             if player.score >= 100:
                 self.GameOver(player)
                 break
 
-    def gameOver(self, player, turn):
-        """ Method that handels logic on game over"""
-        self.__gameIsActive = False
+    def gameOver(self, player, turnCycle):
+        """Fucntion to end the gameloop and declares a winner.
+            arg1 (Player): the winner of the game.
+            arg2 (int): on what turn cycle the game was ended.
+        """
         player.iWin()
