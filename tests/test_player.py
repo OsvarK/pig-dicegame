@@ -1,5 +1,5 @@
 import unittest
-from src.player import Player
+from pigdicegame.player import Player
 
 
 class TestPlayer(unittest.TestCase):
@@ -11,6 +11,6 @@ class TestPlayer(unittest.TestCase):
             self.assertTrue(player.throwDice() in range(1, 6))
 
 
-# Run unitest, can also be runnned by 'py -m unititest test_player.py'
+# Run by typing: py <filename>
 if __name__ == '__main__':
     unittest.main()

@@ -1,4 +1,4 @@
-from src.userInterface import UserInterface
+from pigdicegame.userInterface import UserInterface
 
 
 class Game:

@@ -1,5 +1,5 @@
 import unittest
-from src.bot import Bot
+from pigdicegame.bot import Bot
 
 
 class TestBot(unittest.TestCase):

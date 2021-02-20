@@ -1,4 +1,4 @@
-from src.game import Game
+from pigdicegame.game import Game
 
 
 def main():
