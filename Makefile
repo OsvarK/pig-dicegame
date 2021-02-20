@@ -34,10 +34,10 @@ test-coverage:
 	- coverage report -m
 
 test-pylint:
-	- pylint src
+	- pylint pigdicegame
 
 test-flake8:
-	- flake8 src
+	- flake8 pigdicegame
 
 test-all:
 	@echo --------------------------------------------------------------------------
@@ -53,13 +53,13 @@ test-all:
 	@echo --------------------------------------------------------------------------
 	@echo ----------------------------- Running pylint -----------------------------
 	@echo --------------------------------------------------------------------------
-	- pylint src
+	- pylint pigdicegame
 	@echo --------------------------------------------------------------------------
 	@echo ----------------------------- Running flake8 -----------------------------
 	@echo --------------------------------------------------------------------------
-	- flake8 src
+	- flake8 pigdicegame
 
 test-lint:
-	- pylint src
-	- flake8 src
+	- pylint pigdicegame
+	- flake8 pigdicegame
 
