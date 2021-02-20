@@ -25,7 +25,10 @@ class TestBot(unittest.TestCase):
         with self.assertRaises(FileNotFoundError):
             b.getRandomBotName(PATH + "\\resources\\namebotsss.txt")
         for i in range(0, 20):
-            self.assertTrue(isinstance(PATH + "\\resources\\botnames.txt", str))
+            self.assertTrue(isinstance(
+                PATH +
+                "\\resources\\botnames.txt", str)
+            )
 
 
 # Run by typing: py <filename>
