@@ -15,11 +15,13 @@ class Game:
     Methods
     -------
         gameLoop():
-            This method controlls the flow of the game.
+            Method thats controlls the flow of the game.
         startGame():
-            This method starts the game.
-        diceThrowLoop(): int
-            This method controlls the flow of dice loop of the game.
+            Method to start the game.
+        humanDiceLoop(): int
+            This method controlls the flow of dice for the human.
+        botDiceLoop(): int
+            This method controlls the flow of dice for the bot.
         hasPlayerWon(Player): bool
             Determine if player has won.
         updateTurnIndex(int): int
