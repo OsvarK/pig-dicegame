@@ -16,7 +16,7 @@ class Player(object):
     """
 
     def __init__(self, username):
-        super.__init__()
+        super().__init__()
         self.score = 0
         self.username = username
         self.wins = 0
