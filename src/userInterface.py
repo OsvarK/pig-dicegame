@@ -4,8 +4,16 @@ class UserInterface():
 
     Methods
     -------
-        throwDiceQuestion(): int
-            Asks the user to throw a dice
+        throwDiceLoop(Player): int
+            Logic to controll the dice loop for the user.
+        displayMainMenu():
+            Display main menu.
+        displayGameStartup():
+            Display game setup.
+        displayWhosTurn(Player):
+            Display whos turn it is, when a new turn in the game occures.
+        displayDiceThrow(Player, dice):
+            Display a dice throw
     """
 
     def __init__(self):
