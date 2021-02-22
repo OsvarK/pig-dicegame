@@ -44,5 +44,6 @@ class Player(object):
 
     def iWin(self, onTurn):
         """This player won the game"""
-        self.win += 1
+        print(self.username + f" winns the game in {onTurn} turns!")
+        self.wins += 1
         self.isfastestWin(onTurn)

@@ -1,16 +1,21 @@
+import sys
 import unittest
-# from src.game import Game
+sys.path.append("pigdicegame/lib")
+
+from bot import Bot
+from game import Game
 
 
 class TestGame(unittest.TestCase):
 
-    def test_startGame(self):
-        pass
-
-    # add the gameloop to test? but how
-
-    def test_gameOver(self):
-        pass
+    def test_BotGame(self):
+        players = [
+            Bot(),
+            Bot(),
+            Bot(),
+            Bot()
+        ]
+        Game.startGame(players)
 
 
 # Run by typing: py <filename>

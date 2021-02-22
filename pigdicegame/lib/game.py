@@ -24,7 +24,7 @@ class Game:
         turnCycle = 0
         while True:
             player = players[playerIndex]
-            UserInterface.DisplayWhosTurn(player)
+            UserInterface.displayWhosTurn(player)
             if isinstance(player, Bot):
                 points = player.getDiceThrows()
             else:
@@ -38,7 +38,7 @@ class Game:
             else:
                 playerIndex += 1
             if player.score >= 100:
-                Game.GameOver(player)
+                Game.gameOver(player, turnCycle)
                 break
 
     @staticmethod
@@ -47,4 +47,4 @@ class Game:
             arg1 (Player): the winner of the game.
             arg2 (int): on what turn cycle the game was ended.
         """
-        player.iWin()
+        player.iWin(turnCycle)

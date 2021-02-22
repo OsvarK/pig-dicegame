@@ -10,11 +10,10 @@ class Bot(Player):
     """
 
     def __init__(self):
-        super(Bot).__init__()
-        self.username = self.getRandomBotName(
+        Player.__init__(self, self.getRandomBotName(
             os.path.dirname(os.path.realpath(__file__)) +
             "\\resources\\botnames.txt"
-        )
+        ))
 
     def calculateHowManyThrows(self):
         """Decide how many throws the bot wants to do"""
@@ -48,6 +47,6 @@ class Bot(Player):
         try:
             with open(path, "r") as file:
                 names = file.readlines()
-                return "[Bot] " + names[random.randint(0, len(names) - 1)]
+                return "[Bot] " + names[random.randint(0, len(names) - 1)].strip('\n')
         except FileNotFoundError:
             raise FileNotFoundError

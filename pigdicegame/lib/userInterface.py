@@ -23,11 +23,12 @@ class UserInterface():
     @staticmethod
     def displayWhosTurn(player):
         """Display whos turn it is"""
+        print("New turn: " + player.username)
         # Varje turn så måste vi veta vems turn det är
         pass
 
     @staticmethod
     def displayDiceThrow(player, dice):
         """Display a dice throw"""
-        # När ett throw händer vissa det.
+        print(player.username + f" rolled: {dice}")
         pass
