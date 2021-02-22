@@ -9,14 +9,14 @@ from game import Game
 class TestGame(unittest.TestCase):
 
     def test_BotGame(self):
-        players = [
-            Bot(None),
-            Bot(None),
-            Bot(None),
-            Bot(None)
-        ]
-        Game.startGame(players)
-
+        players = []
+        players.append(Bot("Tester 1"))
+        self.assertFalse(Game.startGame(players))
+        for i in range(2, 5):
+            players.append(Bot(f"Tester {i}"))
+        self.assertTrue(Game.startGame(players))
+        players.append(Bot("Tester 5"))
+        self.assertFalse(Game.startGame(players))
 
 # Run by typing: py <filename>
 if __name__ == '__main__':

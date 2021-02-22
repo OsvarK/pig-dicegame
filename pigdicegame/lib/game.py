@@ -12,7 +12,7 @@ class Game:
         """Takes list of players and starts the gameloop.
         Returns false if game was not able to be created
         """
-        if len(players) > 1:
+        if len(players) in range(2, 5):
             Game.__gameLoop(players)
             return True
         return False
