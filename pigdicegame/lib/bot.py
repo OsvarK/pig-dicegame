@@ -30,12 +30,18 @@ class Bot(Player):
     def getDiceThrows(self):
         """Bot throws dices and return the points"""
         points = 0
-        for i in range(self.calculateHowManyThrows()):
+        for diceThrows in range(self.calculateHowManyThrows()):
             dice = self.throwDice()
             if dice == 1:   # Dice landed one 1, return 0 points
                 return 0
             points += dice
+            if (self.wantToBank(points, diceThrows)):
+                return points
         return points
+
+    def wantToBank(self, totalPoints, diceThrows):
+        """Checks if the bot wants to bank its points."""
+        return diceThrows >= 2 and totalPoints > diceThrows * 3
 
     def getRandomBotName(self, path):
         """Retrive a random bot name"""

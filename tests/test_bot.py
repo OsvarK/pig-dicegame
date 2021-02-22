@@ -22,6 +22,15 @@ class TestBot(unittest.TestCase):
         for i in range(0, 20):
             self.assertTrue(b.getDiceThrows() >= 0)
 
+    def test_wantToBank(self):
+        b = Bot()
+        self.assertTrue(b.wantToBank(12, 2))
+        self.assertTrue(b.wantToBank(13, 4))
+        self.assertTrue(b.wantToBank(7, 2))
+        self.assertFalse(b.wantToBank(6, 2))
+        self.assertFalse(b.wantToBank(12, 4))
+        self.assertFalse(b.wantToBank(6, 1))
+
     def test_getRandomBotName(self):
         """Tests bot:getRandomBotName function"""
         b = Bot()
