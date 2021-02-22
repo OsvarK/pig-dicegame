@@ -19,7 +19,9 @@ class Game:
 
     @staticmethod
     def __gameLoop(players):
-        """This fucntion controlls the flow of the game (the game loop)"""
+        """This function controlls the flow of the game (the game loop)
+        arg (list:player): list of players
+        """
         playerIndex = 0
         turnCycle = 0
         while True:
