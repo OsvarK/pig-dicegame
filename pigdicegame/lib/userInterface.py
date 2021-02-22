@@ -2,11 +2,8 @@ class UserInterface():
     """
     This class controlls the input and output to the player.
     """
-
-    def __init__(self):
-        super().__init__()
-
-    def throwDiceLoop(self, player):
+    @staticmethod
+    def throwDiceLoop(player):
         """
         This function controlls the flow of the dice loop,
         the players ability to throw dices.
@@ -16,12 +13,14 @@ class UserInterface():
         # return the points as a list
         return True
 
-    def displayWhosTurn(self, player):
+    @staticmethod
+    def displayWhosTurn(player):
         """Display whos turn it is"""
         # Varje turn så måste vi veta vems turn det är
         pass
 
-    def displayDiceThrow(self, player, dice):
+    @staticmethod
+    def displayDiceThrow(player, dice):
         """Display a dice throw"""
         # När ett throw händer vissa det.
         pass

@@ -1,5 +1,5 @@
 import random
-
+from userInterface import UserInterface
 
 class Player(object):
     """
@@ -17,6 +17,7 @@ class Player(object):
     def throwDice(self):
         """Throws the dice"""
         dice = random.randint(1, 6)
+        UserInterface.displayDiceThrow(self, dice)
         return dice
 
     def loadData(self):

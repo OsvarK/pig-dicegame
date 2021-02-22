@@ -7,23 +7,6 @@ class Game:
     Class represents the dice game, pig.
     This class controlls the logic and the flow of the game.
     """
-    __instance = None
-
-    @staticmethod
-    def getInstance():
-        """Retrives the singletoon of this class.
-        If there is no singleton, create one
-        """
-        if Game.__instance is None:
-            Game()
-        return Game.__instance
-
-    def __init__(self):
-        """Class constructor, set singleton and default variables"""
-        if Game.__instance is None:
-            Game.__instance = self
-        self.ui = UserInterface()
-
     def startGame(self, players):
         """Takes list of players and starts the gameloop.
         Returns false if game was not able to be created
@@ -39,11 +22,11 @@ class Game:
         turnCycle = 0
         while True:
             player = players[playerIndex]
-            self.ui.DisplayWhosTurn(player)
+            UserInterface.DisplayWhosTurn(player)
             if isinstance(player, Bot):
                 points = self.botDiceLoop(self.ui)
             else:
-                pointsAccumulated = self.ui.throwDiceLoop(player)
+                pointsAccumulated = UserInterface.throwDiceLoop(player)
                 player.ishigestScoreInOneTurn(pointsAccumulated)
                 points = sum(pointsAccumulated)
             player.score += points
