@@ -20,10 +20,10 @@ install:
 
 # Testing ----------------------------------------------------
 unittest:
-	- PYTHON -m unittest discover pigdicegame/tests
+	- PYTHON -m unittest discover tests
 
 coverage:
-	- coverage run -m unittest discover pigdicegame/tests
+	- coverage run -m unittest discover tests
 	- coverage html
 	- coverage report -m
 
@@ -37,11 +37,11 @@ test:
 	@echo --------------------------------------------------------------------------
 	@echo ----------------------------- Running unittest----------------------------
 	@echo --------------------------------------------------------------------------
-	- PYTHON -m unittest discover pigdicegame/tests
+	- PYTHON -m unittest discover tests
 	@echo --------------------------------------------------------------------------
 	@echo ----------------------------- Running coverage ---------------------------
 	@echo --------------------------------------------------------------------------
-	- coverage run -m unittest discover pigdicegame/tests
+	- coverage run -m unittest discover tests
 	- coverage html
 	- coverage report -m
 	@echo --------------------------------------------------------------------------

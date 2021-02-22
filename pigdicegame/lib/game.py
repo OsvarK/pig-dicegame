@@ -45,7 +45,3 @@ class Game:
             arg2 (int): on what turn cycle the game was ended.
         """
         player.iWin()
-
-
-if __name__ == '__main__':
-    Game()
