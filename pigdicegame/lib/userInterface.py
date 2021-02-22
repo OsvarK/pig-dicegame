@@ -2,6 +2,13 @@ class UserInterface():
     """
     This class controlls the input and output to the player.
     """
+
+    @staticmethod
+    def start():
+        """Start of program"""
+        # Entry point fom main.py
+        pass
+
     @staticmethod
     def throwDiceLoop(player):
         """

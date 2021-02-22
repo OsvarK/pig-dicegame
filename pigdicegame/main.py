@@ -1,4 +1,4 @@
-from lib.game import Game
+from lib.userInterface import UserInterface
 
 if __name__ == '__main__':
-    Game()
+    UserInterface.Start()
