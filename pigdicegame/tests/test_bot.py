@@ -1,6 +1,10 @@
 import unittest
 import os
-from pigdicegame.bot import Bot
+import sys
+
+sys.path.append("pigdicegame/lib")
+
+from bot import Bot
 
 
 class TestBot(unittest.TestCase):

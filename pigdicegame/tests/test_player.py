@@ -1,5 +1,9 @@
 import unittest
-from pigdicegame.player import Player
+import sys
+
+sys.path.append("pigdicegame/lib")
+
+from player import Player
 
 
 class TestPlayer(unittest.TestCase):

@@ -7,64 +7,52 @@ PIP:
 	PYTHON $(venv)pip
 
 # Install ----------------------------------------------------
-setup:
+venv:
 	@echo Creating a virtual environment...
 	python3 -m venv .venv
 	@echo virtual environment was created!
-	@echo Uppgrading pip...
-	PIP install --upgrade pip
-	@echo Setup is complete!
 	@echo Now activate the virtual environment: '.venv/Scripts/activate'
-	@echo after activation type 'make install'
+	@echo To install requirements after activation: 'make install'
 
 install:
 	@echo Installing requirements.txt...
 	PIP install -r requirements.txt
-	@echo installing the project... (this step is nessesary to run tests)
-	PIP install .
-	@echo All done, type pig for execution of application or run make commands for testing.
 
 # Testing ----------------------------------------------------
 unittest:
-	- PYTHON -m unittest discover tests
+	- PYTHON -m unittest discover pigdicegame/tests
 
 coverage:
-	- coverage run -m unittest discover tests
+	- coverage run -m unittest discover pigdicegame/tests
 	- coverage html
 	- coverage report -m
 
 pylint:
-	- pylint pigdicegame
+	- pylint pigdicegame/lib
 
 flake8:
-	- flake8 pigdicegame
+	- flake8 pigdicegame/lib
 
 test:
 	@echo --------------------------------------------------------------------------
 	@echo ----------------------------- Running unittest----------------------------
 	@echo --------------------------------------------------------------------------
-	- PYTHON -m unittest discover tests
+	- PYTHON -m unittest discover pigdicegame/tests
 	@echo --------------------------------------------------------------------------
 	@echo ----------------------------- Running coverage ---------------------------
 	@echo --------------------------------------------------------------------------
-	- coverage run -m unittest discover tests
+	- coverage run -m unittest discover pigdicegame/tests
 	- coverage html
 	- coverage report -m
 	@echo --------------------------------------------------------------------------
 	@echo ----------------------------- Running pylint -----------------------------
 	@echo --------------------------------------------------------------------------
-	- pylint pigdicegame
+	- pylint pigdicegame/lib
 	@echo --------------------------------------------------------------------------
 	@echo ----------------------------- Running flake8 -----------------------------
 	@echo --------------------------------------------------------------------------
-	- flake8 pigdicegame
+	- flake8 pigdicegame/lib
 
 lint:
-	- pylint pigdicegame
-	- flake8 pigdicegame
-
-# Helpers -----------------------------------------------------------------------------
-cleanup:
-	- rmdir /Q /S htmlcov
-	- del .\.coverage
-	- del .\*\__pycache__
+	- pylint pigdicegame/lib
+	- flake8 pigdicegame/lib

@@ -1,6 +1,6 @@
 import random
 import os
-from pigdicegame.player import Player
+from player import Player
 
 
 class Bot(Player):

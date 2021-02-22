@@ -1,5 +1,5 @@
-from pigdicegame.userInterface import UserInterface
-from pigdicegame.bot import Bot
+from userInterface import UserInterface
+from bot import Bot
 
 
 class Game:
