@@ -24,7 +24,7 @@ class Game:
             player = players[playerIndex]
             UserInterface.DisplayWhosTurn(player)
             if isinstance(player, Bot):
-                points = self.botDiceLoop(self.ui)
+                points = self.botDiceLoop()
             else:
                 pointsAccumulated = UserInterface.throwDiceLoop(player)
                 player.ishigestScoreInOneTurn(pointsAccumulated)
@@ -45,3 +45,7 @@ class Game:
             arg2 (int): on what turn cycle the game was ended.
         """
         player.iWin()
+
+
+if __name__ == '__main__':
+    Game()

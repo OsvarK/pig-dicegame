@@ -7,11 +7,6 @@ class Bot(Player):
     """
     Class represents a a bot that is beeing
     inheritanced by the Player class.
-
-    Methods
-    -------
-        calculateHowManyThrows(): int
-            calculate how many thros the bot are willing to do.
     """
 
     def __init__(self):
@@ -33,7 +28,7 @@ class Bot(Player):
                 return howManyThrows
 
     def getDiceThrows(self):
-        """ Bot throws dices and return the points, (arg can be None)"""
+        """Bot throws dices and return the points"""
         points = 0
         for i in range(self.calculateHowManyThrows()):
             dice = self.throwDice()
@@ -43,7 +38,7 @@ class Bot(Player):
         return points
 
     def getRandomBotName(self, path):
-        """ Retrive a random bot name """
+        """Retrive a random bot name"""
         try:
             with open(path, "r") as file:
                 names = file.readlines()

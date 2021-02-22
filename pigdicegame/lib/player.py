@@ -1,6 +1,7 @@
 import random
 from userInterface import UserInterface
 
+
 class Player(object):
     """
     Class represents a player.
