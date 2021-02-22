@@ -10,6 +10,7 @@ class Bot(Player):
     """
 
     def __init__(self, username):
+        """Class contrctor: If no username is given, it will generate one"""
         if username is None:
             username = self.getRandomBotName(
                 os.path.dirname(os.path.realpath(__file__)) +
@@ -33,7 +34,7 @@ class Bot(Player):
         points = 0
         for diceThrows in range(self.calculateHowManyThrows()):
             dice = self.throwDice()
-            if dice == 1:   # Dice landed one 1, return 0 points
+            if dice == 1:
                 return 0
             points += dice
             if (self.wantToBank(points, diceThrows)):
@@ -49,6 +50,6 @@ class Bot(Player):
         try:
             with open(path, "r") as file:
                 names = file.readlines()
-                return "[Bot] " + names[random.randint(0, len(names) - 1)].strip('\n')
+                return names[random.randint(0, len(names) - 1)].strip('\n')
         except FileNotFoundError:
             raise FileNotFoundError
