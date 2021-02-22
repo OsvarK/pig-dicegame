@@ -9,11 +9,13 @@ class Bot(Player):
     inheritanced by the Player class.
     """
 
-    def __init__(self):
-        Player.__init__(self, self.getRandomBotName(
-            os.path.dirname(os.path.realpath(__file__)) +
-            "\\resources\\botnames.txt"
-        ))
+    def __init__(self, username):
+        if username is None:
+            username = self.getRandomBotName(
+                os.path.dirname(os.path.realpath(__file__)) +
+                "\\resources\\botnames.txt"
+            )
+        Player.__init__(self, username)
 
     def calculateHowManyThrows(self):
         """Decide how many throws the bot wants to do"""

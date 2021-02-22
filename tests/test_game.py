@@ -10,10 +10,10 @@ class TestGame(unittest.TestCase):
 
     def test_BotGame(self):
         players = [
-            Bot(),
-            Bot(),
-            Bot(),
-            Bot()
+            Bot(None),
+            Bot(None),
+            Bot(None),
+            Bot(None)
         ]
         Game.startGame(players)
 
