@@ -7,16 +7,18 @@ class Game:
     Class represents the dice game, pig.
     This class controlls the logic and the flow of the game.
     """
-    def startGame(self, players):
+    @staticmethod
+    def startGame(players):
         """Takes list of players and starts the gameloop.
         Returns false if game was not able to be created
         """
         if len(players) > 1:
-            self.__gameLoop(players)
+            Game.__gameLoop(players)
             return True
         return False
 
-    def __gameLoop(self, players):
+    @staticmethod
+    def __gameLoop(players):
         """This fucntion controlls the flow of the game (the game loop)"""
         playerIndex = 0
         turnCycle = 0
@@ -24,7 +26,7 @@ class Game:
             player = players[playerIndex]
             UserInterface.DisplayWhosTurn(player)
             if isinstance(player, Bot):
-                points = self.botDiceLoop()
+                points = player.getDiceThrows()
             else:
                 pointsAccumulated = UserInterface.throwDiceLoop(player)
                 player.ishigestScoreInOneTurn(pointsAccumulated)
@@ -36,10 +38,11 @@ class Game:
             else:
                 playerIndex += 1
             if player.score >= 100:
-                self.GameOver(player)
+                Game.GameOver(player)
                 break
 
-    def gameOver(self, player, turnCycle):
+    @staticmethod
+    def gameOver(player, turnCycle):
         """Fucntion to end the gameloop and declares a winner.
             arg1 (Player): the winner of the game.
             arg2 (int): on what turn cycle the game was ended.
