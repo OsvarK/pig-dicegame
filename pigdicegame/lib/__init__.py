@@ -1,0 +1,3 @@
+"""
+Pigdice game engine
+"""

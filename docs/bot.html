@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module bot</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>bot</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Coscar%5Cdesktop%5Cdevelopment%5Cpython%5Cda115a_hkr_assignment%5Cgame%5Cpig-dicegame%5Cpigdicegame%5Clib%5Cbot.py">c:\users\oscar\desktop\development\python\da115a_hkr_assignment\game\pig-dicegame\pigdicegame\lib\bot.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="random.html">random</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="player.html#Player">player.Player</a>(<a href="builtins.html#object">builtins.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="bot.html#Bot">Bot</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Bot">class <strong>Bot</strong></a>(<a href="player.html#Player">player.Player</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Bot">Bot</a>(username)<br>
+&nbsp;<br>
+Class&nbsp;represents&nbsp;a&nbsp;a&nbsp;bot&nbsp;that&nbsp;is&nbsp;beeing<br>
+inheritanced&nbsp;by&nbsp;the&nbsp;<a href="player.html#Player">Player</a>&nbsp;class.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="bot.html#Bot">Bot</a></dd>
+<dd><a href="player.html#Player">player.Player</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Bot-__init__"><strong>__init__</strong></a>(self, username)</dt><dd><tt>Class&nbsp;contrctor:&nbsp;If&nbsp;no&nbsp;username&nbsp;is&nbsp;given,&nbsp;it&nbsp;will&nbsp;generate&nbsp;one</tt></dd></dl>
+
+<dl><dt><a name="Bot-calculateHowManyThrows"><strong>calculateHowManyThrows</strong></a>(self)</dt><dd><tt>Decide&nbsp;how&nbsp;many&nbsp;throws&nbsp;the&nbsp;bot&nbsp;wants&nbsp;to&nbsp;do</tt></dd></dl>
+
+<dl><dt><a name="Bot-getDiceThrows"><strong>getDiceThrows</strong></a>(self)</dt><dd><tt><a href="#Bot">Bot</a>&nbsp;throws&nbsp;dices&nbsp;and&nbsp;return&nbsp;the&nbsp;points</tt></dd></dl>
+
+<dl><dt><a name="Bot-getRandomBotName"><strong>getRandomBotName</strong></a>(self, path)</dt><dd><tt>Retrive&nbsp;a&nbsp;random&nbsp;bot&nbsp;name</tt></dd></dl>
+
+<dl><dt><a name="Bot-wantToBank"><strong>wantToBank</strong></a>(self, totalPoints, diceThrows)</dt><dd><tt>Checks&nbsp;if&nbsp;the&nbsp;bot&nbsp;wants&nbsp;to&nbsp;bank&nbsp;its&nbsp;points.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="player.html#Player">player.Player</a>:<br>
+<dl><dt><a name="Bot-iWin"><strong>iWin</strong></a>(self, onTurn)</dt><dd><tt>This&nbsp;player&nbsp;won&nbsp;the&nbsp;game</tt></dd></dl>
+
+<dl><dt><a name="Bot-isfastestWin"><strong>isfastestWin</strong></a>(self, onTurn)</dt><dd><tt>Check&nbsp;if&nbsp;this&nbsp;is&nbsp;the&nbsp;fastes&nbsp;win</tt></dd></dl>
+
+<dl><dt><a name="Bot-ishigestScoreInOneTurn"><strong>ishigestScoreInOneTurn</strong></a>(self, newHigescore)</dt><dd><tt>Check&nbsp;if&nbsp;this&nbsp;is&nbsp;the&nbsp;new&nbsp;higescore&nbsp;in&nbsp;one&nbsp;turn</tt></dd></dl>
+
+<dl><dt><a name="Bot-loadData"><strong>loadData</strong></a>(self)</dt><dd><tt>Fetch&nbsp;data&nbsp;from&nbsp;storage</tt></dd></dl>
+
+<dl><dt><a name="Bot-saveData"><strong>saveData</strong></a>(self)</dt><dd><tt>Save&nbsp;data&nbsp;to&nbsp;storage</tt></dd></dl>
+
+<dl><dt><a name="Bot-throwDice"><strong>throwDice</strong></a>(self)</dt><dd><tt>Throws&nbsp;the&nbsp;dice</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="player.html#Player">player.Player</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

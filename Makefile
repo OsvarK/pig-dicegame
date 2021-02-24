@@ -1,3 +1,5 @@
+.ONESHELL:
+
 VENV = .venv/Scripts/
 
 PYTHON:
@@ -56,3 +58,37 @@ test:
 lint:
 	- pylint pigdicegame/lib
 	- flake8 pigdicegame/lib
+
+doc:
+	# Generating docks.
+	# with an ugly solution, but it works.
+	mkdir docs
+	cd .\pigdicegame
+	PYTHON -m pydoc -w .\main.py
+	move .\main.html ..\docs
+	cd .\lib
+	PYTHON -m pydoc -w .\__init__.py
+	move .\__init__.html ..\..\docs
+	PYTHON -m pydoc -w .\bot.py
+	move .\bot.html ..\..\docs
+	PYTHON -m pydoc -w .\game.py
+	move .\game.html ..\..\docs
+	PYTHON -m pydoc -w .\player.py
+	move .\player.html ..\..\docs
+	PYTHON -m pydoc -w .\userInterface.py
+	move .\userInterface.html ..\..\docs
+
+uml:
+	# Install 'pip install pylint' as admin in none venv.
+	# Install 'choco install graphviz' as admin in none venv.
+	pyreverse -o png .\pigdicegame\lib
+	move .\packages.png .\docs
+	move .\classes.png .\docs
+
+clean:
+	rmdir htmlcov /s /q
+	del .\.coverage
+	rmdir .\pigdicegame\__pycache__ /s /q
+	rmdir .\pigdicegame\lib\__pycache__ /s /q
+	rmdir .\pigdicegame\lib\resources\__pycache__ /s /q
+	rmdir .\tests\__pycache__ /s /q
