@@ -24,9 +24,6 @@ class Player(object):
     def loadData(self):
         """Fetch data from storage"""
         # TODO: Get data from storage, and update this variables
-        self.wins = 0
-        self.higestScoreInOneTurn = []
-        self.fastestWin = []
 
     def saveData(self):
         """Save data to storage"""
