@@ -32,7 +32,6 @@ class TestPlayer(unittest.TestCase):
         player.isfastestWin(5)
         self.assertFalse(player.fastestWin == 10)
         self.assertTrue(player.fastestWin == 5)
-        pass
 
     def test_iWin(self):
         pass
