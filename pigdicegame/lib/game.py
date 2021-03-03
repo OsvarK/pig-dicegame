@@ -8,7 +8,7 @@ class Game:
     This class controlls the logic and the flow of the game.
     """
     @staticmethod
-    def startGame(players):
+    def start_game(players):
         """Takes list of players and starts the gameloop.
         Returns false if game was not able to be created
         """
@@ -22,31 +22,31 @@ class Game:
         """This function controlls the flow of the game (the game loop)
         arg (list:player): list of players
         """
-        playerIndex = 0
-        turnCycle = 0
+        player_index = 0
+        turn_cycle = 0
         while True:
-            player = players[playerIndex]
+            player = players[player_index]
             UserInterface.displayWhosTurn(player)
             if isinstance(player, Bot):
-                points = player.getDiceThrows()
+                points = player.get_dice_throws()
             else:
-                pointsAccumulated = UserInterface.throwDiceLoop(player)
-                player.ishigestScoreInOneTurn(pointsAccumulated)
-                points = sum(pointsAccumulated)
+                points_accumulated = UserInterface.throwDiceLoop(player)
+                player.is_higest_score_in_one_turn(points_accumulated)
+                points = sum(points_accumulated)
             player.score += points
-            if playerIndex == (len(players) - 1):
-                playerIndex = 0
-                turnCycle += 1
+            if player_index == (len(players) - 1):
+                player_index = 0
+                turn_cycle += 1
             else:
-                playerIndex += 1
+                player_index += 1
             if player.score >= 100:
-                Game.gameOver(player, turnCycle)
+                Game.game_over(player, turn_cycle)
                 break
 
     @staticmethod
-    def gameOver(player, turnCycle):
+    def game_over(player, turnCycle):
         """Fucntion to end the gameloop and declares a winner.
             arg1 (Player): the winner of the game.
             arg2 (int): on what turn cycle the game was ended.
         """
-        player.iWin(turnCycle)
+        player.i_win(turnCycle)

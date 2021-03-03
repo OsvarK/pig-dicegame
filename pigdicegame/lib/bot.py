@@ -31,7 +31,7 @@ class Bot(Player):
         """Bot throws dices and return the points"""
         points = 0
         for dice_throws in range(self.calculate_amount_of_throws()):
-            dice = self.throwDice()
+            dice = self.throw_dice()
             if dice == 1:
                 return 0
             points += dice
