@@ -28,7 +28,7 @@ class Highscore():
     def save_data(self):
         """Save data to storage"""
         try:
-            with open("LocalHighscore.json", "w") as file:
+            with open("pigdicegame/resources/LocalHighscore.json", "w") as file:
                 json.dump(self.highscore, file, indent=2)
         except FileNotFoundError:
             print("Error: File Not Found")
@@ -37,7 +37,7 @@ class Highscore():
     def load_data(self):
         """Fetch data from storage"""
         try:
-            with open("LocalHighscore.json", "r") as file:
+            with open("pigdicegame/resources/LocalHighscore.json", "r") as file:
                 self.highscore = json.load(file)
         except FileNotFoundError:
             print("Error: File not found")
