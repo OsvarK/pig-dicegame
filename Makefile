@@ -86,6 +86,7 @@ uml:
 	# Install 'pip install pylint' as admin in none venv.
 	# Install 'choco install graphviz' as admin in none venv.
 	pyreverse -o png .\pigdicegame\lib
+	mkdir docs
 	move .\packages.png .\docs
 	move .\classes.png .\docs
 
