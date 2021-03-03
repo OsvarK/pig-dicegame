@@ -31,7 +31,7 @@ class Player(object):
 
     def ishigestScoreInOneTurn(self, newHigescore):
         """Check if this is the new higescore in one turn"""
-        if newHigescore > sum(self.higestScoreInOneTurn):
+        if sum(newHigescore) > sum(self.higestScoreInOneTurn):
             self.higestScoreInOneTurn = newHigescore
 
     def isfastestWin(self, onTurn):
