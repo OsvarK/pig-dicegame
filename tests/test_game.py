@@ -17,7 +17,3 @@ class TestGame(unittest.TestCase):
         self.assertTrue(Game.startGame(players))
         players.append(Bot("Tester 5"))
         self.assertFalse(Game.startGame(players))
-
-# Run by typing: py <filename>
-if __name__ == '__main__':
-    unittest.main()

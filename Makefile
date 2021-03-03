@@ -25,12 +25,13 @@ unittest:
 	- PYTHON -m unittest discover tests
 
 coverage:
+	- rmdir coverage_results /s /q
 	- coverage run -m unittest discover tests
 	- coverage html
 	- coverage report -m
-	- mkdir coverage
-	- move .coverage ./coverage
-	- move htmlcov ./coverage
+	- mkdir coverage_results
+	- move .coverage ./coverage_results
+	- move htmlcov ./coverage_results
 
 pylint:
 	- pylint pigdicegame/lib
@@ -89,8 +90,7 @@ uml:
 	move .\classes.png .\docs
 
 clean:
-	rmdir htmlcov /s /q
-	del .\.coverage
+	rmdir coverage_results /s /q
 	rmdir .\pigdicegame\__pycache__ /s /q
 	rmdir .\pigdicegame\lib\__pycache__ /s /q
 	rmdir .\pigdicegame\lib\resources\__pycache__ /s /q

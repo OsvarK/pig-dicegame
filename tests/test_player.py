@@ -14,7 +14,3 @@ class TestPlayer(unittest.TestCase):
         for i in range(1, 20):
             self.assertTrue(player.throwDice() in range(0, 7))
 
-
-# Run by typing: py <filename>
-if __name__ == '__main__':
-    unittest.main()

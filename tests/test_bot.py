@@ -42,8 +42,3 @@ class TestBot(unittest.TestCase):
                 PATH +
                 "\\resources\\botnames.txt", str)
             )
-
-
-# Run by typing: py <filename>
-if __name__ == '__main__':
-    unittest.main()

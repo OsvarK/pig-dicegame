@@ -1,6 +1,6 @@
 virtual_env/
 __pycache__/
 htmlcov/
-coverage/
+coverage_results/
 .coverage
 .venv
