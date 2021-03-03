@@ -26,11 +26,11 @@ class Game:
         turn_cycle = 0
         while True:
             player = players[player_index]
-            UserInterface.displayWhosTurn(player)
+            UserInterface.display_whos_turn(player)
             if isinstance(player, Bot):
                 points = player.get_dice_throws()
             else:
-                points_accumulated = UserInterface.throwDiceLoop(player)
+                points_accumulated = UserInterface.throw_dice_loop(player)
                 player.is_higest_score_in_one_turn(points_accumulated)
                 points = sum(points_accumulated)
             player.score += points

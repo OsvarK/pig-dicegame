@@ -15,7 +15,7 @@ class Player(object):
     def throw_dice(self):
         """Throws the dice"""
         dice = random.randint(1, 6)
-        UserInterface.displayDiceThrow(self, dice)
+        UserInterface.display_dice_throw(self, dice)
         return dice
 
     def load_data(self):

@@ -10,7 +10,7 @@ class UserInterface():
         pass
 
     @staticmethod
-    def throwDiceLoop(player):
+    def throw_dice_loop(player):
         """
         This function controlls the flow of the dice loop,
         the players ability to throw dices.
@@ -21,14 +21,14 @@ class UserInterface():
         return True
 
     @staticmethod
-    def displayWhosTurn(player):
+    def display_whos_turn(player):
         """Display whos turn it is"""
         print("New turn: " + player.username)
         # Varje turn så måste vi veta vems turn det är
         pass
 
     @staticmethod
-    def displayDiceThrow(player, dice):
+    def display_dice_throw(player, dice):
         """Display a dice throw"""
         print(player.username + f" rolled: {dice}")
         pass
