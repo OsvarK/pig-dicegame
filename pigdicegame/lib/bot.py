@@ -12,7 +12,7 @@ class Bot(Player):
     def __init__(self, username):
         """Class contrctor: If no username is given, it will generate one"""
         if username is None:
-            username = self.getRandomBotName("resources/botnames.txt")
+            username = self.getRandomBotName("pigdicegame/resources/botnames.txt")
         Player.__init__(self, username)
 
     def calculateHowManyThrows(self):

@@ -35,6 +35,7 @@ class TestBot(unittest.TestCase):
         """Tests bot:getRandomBotName function"""
         b = Bot(None)
         with self.assertRaises(FileNotFoundError):
-            b.getRandomBotName("resources/bot.txt")
+            b.getRandomBotName("bot.txt")
         for i in range(0, 20):
-            self.assertTrue(isinstance("resources/bot.txt", str))
+            self.assertTrue(isinstance(
+                "pigdicegame/resources/botnames.txt", str))
