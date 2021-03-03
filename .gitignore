@@ -4,3 +4,4 @@ htmlcov/
 coverage_results/
 .coverage
 .venv
+docs/

@@ -39,25 +39,7 @@ pylint:
 flake8:
 	- flake8 pigdicegame/lib
 
-test:
-	@echo --------------------------------------------------------------------------
-	@echo ----------------------------- Running unittest----------------------------
-	@echo --------------------------------------------------------------------------
-	- PYTHON -m unittest discover tests
-	@echo --------------------------------------------------------------------------
-	@echo ----------------------------- Running coverage ---------------------------
-	@echo --------------------------------------------------------------------------
-	- coverage run -m unittest discover tests
-	- coverage html
-	- coverage report -m
-	@echo --------------------------------------------------------------------------
-	@echo ----------------------------- Running pylint -----------------------------
-	@echo --------------------------------------------------------------------------
-	- pylint pigdicegame/lib
-	@echo --------------------------------------------------------------------------
-	@echo ----------------------------- Running flake8 -----------------------------
-	@echo --------------------------------------------------------------------------
-	- flake8 pigdicegame/lib
+test: unittest coverage lint
 
 lint:
 	- pylint pigdicegame/lib
@@ -67,28 +49,31 @@ doc:
 	# Generating docks.
 	# with an ugly solution, but it works.
 	mkdir docs
+	cd .\docs
+	mkdir api
+	cd ..
 	cd .\pigdicegame
 	PYTHON -m pydoc -w .\main.py
-	move .\main.html ..\docs
+	move .\main.html ..\doc\api
 	cd .\lib
 	PYTHON -m pydoc -w .\__init__.py
-	move .\__init__.html ..\..\docs
+	move .\__init__.html ..\..\docs\api
 	PYTHON -m pydoc -w .\bot.py
-	move .\bot.html ..\..\docs
+	move .\bot.html ..\..\docs\api
 	PYTHON -m pydoc -w .\game.py
-	move .\game.html ..\..\docs
+	move .\game.html ..\..\docs\api
 	PYTHON -m pydoc -w .\player.py
-	move .\player.html ..\..\docs
+	move .\player.html ..\..\docs\api
 	PYTHON -m pydoc -w .\userInterface.py
-	move .\userInterface.html ..\..\docs
+	move .\userInterface.html ..\..\docs\api
 
 uml:
 	# Install 'pip install pylint' as admin in none venv.
 	# Install 'choco install graphviz' as admin in none venv.
 	pyreverse -o png .\pigdicegame\lib
-	mkdir docs
-	move .\packages.png .\docs
-	move .\classes.png .\docs
+	mkdir docs\uml
+	move .\packages.png .\docs\uml
+	move .\classes.png .\docs\uml
 
 clean:
 	rmdir coverage_results /s /q
