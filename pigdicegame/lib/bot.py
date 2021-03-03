@@ -12,37 +12,38 @@ class Bot(Player):
     def __init__(self, username):
         """Class contrctor: If no username is given, it will generate one"""
         if username is None:
-            username = self.getRandomBotName("pigdicegame/resources/botnames.txt")
+            username = self.get_random_botname(
+                "pigdicegame/resources/botnames.txt")
         Player.__init__(self, username)
 
-    def calculateHowManyThrows(self):
+    def calculate_amount_of_throws(self):
         """Decide how many throws the bot wants to do"""
         odds = 1/6
-        howManyThrows = 0
+        how_many_throws = 0
         while True:
-            chance = int(100 * (odds * howManyThrows)) + 100
+            chance = int(100 * (odds * how_many_throws)) + 100
             if random.randint(0, chance) <= 100:
-                howManyThrows += 1
+                how_many_throws += 1
             else:
-                return howManyThrows
+                return how_many_throws
 
-    def getDiceThrows(self):
+    def get_dice_throws(self):
         """Bot throws dices and return the points"""
         points = 0
-        for diceThrows in range(self.calculateHowManyThrows()):
+        for dice_throws in range(self.calculate_amount_of_throws()):
             dice = self.throwDice()
             if dice == 1:
                 return 0
             points += dice
-            if (self.wantToBank(points, diceThrows)):
+            if (self.want_to_bank(points, dice_throws)):
                 return points
         return points
 
-    def wantToBank(self, totalPoints, diceThrows):
+    def want_to_bank(self, total_points, dice_throws):
         """Checks if the bot wants to bank its points."""
-        return diceThrows >= 2 and totalPoints > diceThrows * 3
+        return dice_throws >= 2 and total_points > dice_throws * 3
 
-    def getRandomBotName(self, path):
+    def get_random_botname(self, path):
         """Retrive a random bot name"""
         try:
             with open(path, "r") as file:
