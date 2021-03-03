@@ -28,6 +28,9 @@ coverage:
 	- coverage run -m unittest discover tests
 	- coverage html
 	- coverage report -m
+	- mkdir coverage
+	- move .coverage ./coverage
+	- move htmlcov ./coverage
 
 pylint:
 	- pylint pigdicegame/lib
