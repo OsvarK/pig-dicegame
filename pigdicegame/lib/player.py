@@ -18,14 +18,6 @@ class Player(object):
         UserInterface.display_dice_throw(self, dice)
         return dice
 
-    def load_data(self):
-        """Fetch data from storage"""
-        # TODO: Get data from storage, and update this variables
-
-    def save_data(self):
-        """Save data to storage"""
-        # TODO: save data to storage
-
     def is_higest_score_in_one_turn(self, new_higescore):
         """Check if this is the new higescore in one turn"""
         if sum(new_higescore) > sum(self.higest_score_in_one_turn):
