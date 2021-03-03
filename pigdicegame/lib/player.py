@@ -1,5 +1,5 @@
 import random
-from userInterface import UserInterface
+from userInterface import User_interface
 
 
 class Player(object):
@@ -15,7 +15,7 @@ class Player(object):
     def throw_dice(self):
         """Throws the dice"""
         dice = random.randint(1, 6)
-        UserInterface.display_dice_throw(self, dice)
+        User_interface.display_dice_throw(self, dice)
         return dice
 
     def is_higest_score_in_one_turn(self, new_higescore):

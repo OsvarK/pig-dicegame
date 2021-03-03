@@ -1,4 +1,4 @@
-class UserInterface():
+class User_interface():
     """
     This class controlls the input and output to the player.
     """

@@ -35,7 +35,7 @@ class Bot(Player):
             if dice == 1:
                 return 0
             points += dice
-            if (self.want_to_bank(points, dice_throws)):
+            if self.want_to_bank(points, dice_throws):
                 return points
         return points
 
@@ -49,5 +49,5 @@ class Bot(Player):
             with open(path, "r") as file:
                 names = file.readlines()
                 return names[random.randint(0, len(names) - 1)].strip('\n')
-        except FileNotFoundError:
-            raise FileNotFoundError
+        except FileNotFoundError as e:
+            raise FileNotFoundError from e
