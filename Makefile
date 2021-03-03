@@ -54,7 +54,7 @@ doc:
 	cd ..
 	cd .\pigdicegame
 	PYTHON -m pydoc -w .\main.py
-	move .\main.html ..\doc\api
+	move .\main.html ..\docs\api
 	cd .\lib
 	PYTHON -m pydoc -w .\__init__.py
 	move .\__init__.html ..\..\docs\api
