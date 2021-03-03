@@ -1,11 +1,12 @@
 import json
-
+from player import Player
 
 class Highscore():
 
     def __init__(self):
         self.highscore = []
         self.players = []
+
 
     def createHighScore(self):
         new_score = []
@@ -30,3 +31,12 @@ class Highscore():
                 self.highscore = json.load(file)
         except FileNotFoundError:
             print("Error: File not found")
+
+
+    def createPlayers(self):
+        for entry in self.highscore:
+            player = Player(entry["username"])
+            player.score = entry["score"]
+            player.higestScoreInOneTurn = entry["higestScoreInOneTurn"]
+            player.fastestWin = entry["fastestWin"]
+            self.players.append(player)
