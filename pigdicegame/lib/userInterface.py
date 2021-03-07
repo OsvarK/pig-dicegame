@@ -10,6 +10,11 @@ class User_interface():
         pass
 
     @staticmethod
+    def game_setup_menu():
+        """Setups up the game, how many players and how many bots"""
+        pass
+
+    @staticmethod
     def throw_dice_loop(player):
         """
         This function controlls the flow of the dice loop,
@@ -31,4 +36,16 @@ class User_interface():
     def display_dice_throw(player, dice):
         """Display a dice throw"""
         print(player.username + f" rolled: {dice}")
+        pass
+
+    @staticmethod
+    def create_player_profiel():
+        """Creates a player profile"""
+        pass
+
+    @staticmethod
+    def input_handler():
+        """Handles input from user with error handling, 
+        returning input as string
+        """
         pass
