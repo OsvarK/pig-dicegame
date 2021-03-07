@@ -13,6 +13,7 @@ class User_interface():
     def start():
         """Start of program"""
         User_interface.higescore = Highscore()
+        User_interface.higescore.create_players()
         User_interface.main_menu()
 
     @staticmethod
@@ -55,6 +56,13 @@ class User_interface():
     @staticmethod
     def create_player_profiel():
         """Creates a player profile"""
+        User_interface.create_highscore()   # Saves data after creation
+        pass
+
+    @staticmethod
+    def change_player_profiel():
+        """Change a player profile"""
+        User_interface.create_highscore()   # Saves data after change
         pass
 
     @staticmethod
@@ -63,3 +71,8 @@ class User_interface():
         returning input as string
         """
         pass
+
+    @staticmethod
+    def game_ended():
+        """Method that displays taht the game ended"""
+        User_interface.create_highscore()   # Saves data after game
