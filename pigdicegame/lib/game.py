@@ -49,4 +49,5 @@ class Game:
             arg1 (Player): the winner of the game.
             arg2 (int): on what turn cycle the game was ended.
         """
+        User_interface.game_ended(player)
         player.i_win(turn_cycle)

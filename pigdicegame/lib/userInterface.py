@@ -73,6 +73,7 @@ class User_interface():
         pass
 
     @staticmethod
-    def game_ended():
+    def game_ended(player):
         """Method that displays taht the game ended"""
+        # player is ref to winner
         User_interface.create_highscore()   # Saves data after game
