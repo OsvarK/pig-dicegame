@@ -1,18 +1,32 @@
+from pigdicegame.lib.highscore import Highscore
+
+
 class User_interface():
     """
     This class controlls the input and output to the player.
     """
 
+    # static refreance to higescore class
+    higescore = None
+
     @staticmethod
     def start():
         """Start of program"""
-        # Entry point fom main.py
-        pass
+        User_interface.higescore = Highscore()
+        User_interface.main_menu()
 
     @staticmethod
     def game_setup_menu():
         """Setups up the game, how many players and how many bots"""
         pass
+
+    @staticmethod
+    def main_menu():
+        """Main menu of the program"""
+        print("1. Play game")
+        print("2. Create player profile")
+        print("3. Change player profile")
+        print("4. Exit")
 
     @staticmethod
     def throw_dice_loop(player):
