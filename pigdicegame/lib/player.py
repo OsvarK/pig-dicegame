@@ -30,6 +30,5 @@ class Player(object):
 
     def i_win(self, on_turn):
         """This player won the game"""
-        print(self.username + f" winns the game in {on_turn} turns!")
         self.wins += 1
         self.is_fastest_win(on_turn)

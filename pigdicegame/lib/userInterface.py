@@ -6,7 +6,7 @@ class User_interface():
     This class controlls the input and output to the player.
     """
 
-    # static refreance to higescore class
+    # Ref to higescore class
     higescore = None
 
     @staticmethod
@@ -66,14 +66,33 @@ class User_interface():
         pass
 
     @staticmethod
-    def input_handler():
+    def input_handler_string(question):
         """Handles input from user with error handling,
         returning input as string
         """
         pass
 
     @staticmethod
+    def input_handler_int_range(question, min, max):
+        """Handles int input from user with error handling and checks if int
+        is in range of min & max param, returning int inputed int.
+        """
+        value = None
+        while True:
+            try:
+                value = int(input(question))
+                if value in range(min, max + 1):
+                    return value
+                else:
+                    print(f"Input has to in range of {min} - {max}")
+            except ValueError:
+                print("Input has to be an integer")
+
+    @staticmethod
     def game_ended(player):
         """Method that displays taht the game ended"""
         # player is ref to winner
         User_interface.create_highscore()   # Saves data after game
+
+
+User_interface.input_handler_int_range("he", 0, 1)
