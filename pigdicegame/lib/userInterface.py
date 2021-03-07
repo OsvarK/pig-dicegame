@@ -1,4 +1,4 @@
-from pigdicegame.lib.highscore import Highscore
+import highscore
 
 
 class User_interface():
@@ -12,7 +12,7 @@ class User_interface():
     @staticmethod
     def start():
         """Start of program"""
-        User_interface.higescore = Highscore()
+        User_interface.higescore = highscore.Highscore()
         User_interface.higescore.create_players()
         User_interface.main_menu()
 
