@@ -45,7 +45,7 @@ class User_interface():
 
     @staticmethod
     def input_handler():
-        """Handles input from user with error handling, 
+        """Handles input from user with error handling,
         returning input as string
         """
         pass
