@@ -3,14 +3,14 @@
     "score": 0,
     "username": "Swezoo",
     "wins": 0,
-    "higestScoreInOneTurn": [],
-    "fastestWin": 125
+    "higest_score_in_one_turn": 0,
+    "fastest_win": "4"
   },
   {
     "score": 0,
     "username": "Sancla",
     "wins": 0,
-    "higestScoreInOneTurn": [],
-    "fastestWin": 1312357
+    "higest_score_in_one_turn": 0,
+    "fastest_win": "135357"
   }
 ]

@@ -50,6 +50,6 @@ class Highscore():
         for entry in self.highscore:
             player = Player(entry["username"])
             player.score = entry["score"]
-            player.higestScoreInOneTurn = entry["higest_score_in_one_turn"]
-            player.fastestWin = entry["fastest_win"]
+            player.higest_score_in_one_turn = entry["higest_score_in_one_turn"]
+            player.fastest_win = entry["fastest_win"]
             self.players.append(player)

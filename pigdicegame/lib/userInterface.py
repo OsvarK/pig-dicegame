@@ -18,7 +18,8 @@ class User_interface():
         # TODO: load higescore.players
         # Har laddar vi in dem sparade spelarna
         User_interface.higescore.create_players()
-
+        print(User_interface.higescore.highscore)
+        print(User_interface.higescore.players)
         User_interface.main_menu()
 
     @staticmethod
@@ -116,6 +117,6 @@ class User_interface():
         # player is ref to winner
         print(player_ref.username + " won the game!")
         # TODO: Saves higescore.players after creation
+        #User_interface.higescore.create_highscore()
 
-
-#User_interface.start()
+User_interface.start()
