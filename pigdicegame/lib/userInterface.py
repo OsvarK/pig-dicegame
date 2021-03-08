@@ -111,7 +111,7 @@ class User_interface():
         """Method that displays taht the game ended"""
         # player is ref to winner
         print(player_ref.username + " won the game!")
-        User_interface.higescore.create_players()  # Saves data after game
+        #User_interface.higescore.create_players()  # Saves data after game
 
 
 #User_interface.start()
