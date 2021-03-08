@@ -19,6 +19,8 @@ class User_interface():
     @staticmethod
     def game_setup_menu():
         """Setups up the game, how many players and how many bots"""
+        # Här kan man säga till vilka spelar profiler som ska vara med i spelet &
+        # hur många botar
         pass
 
     @staticmethod
