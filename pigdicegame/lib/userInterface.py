@@ -14,7 +14,11 @@ class User_interface():
     def start():
         """Start of program"""
         User_interface.higescore = highscore.Highscore()
+
         # TODO: load higescore.players
+        # Har laddar vi in dem sparade spelarna
+        User_interface.higescore.create_players()
+
         User_interface.main_menu()
 
     @staticmethod
@@ -41,7 +45,7 @@ class User_interface():
         elif option == 3:
             User_interface.change_player_profil()
         elif option == 4:
-            User_interface.higescore.create_players()
+            #TODO: Spara
             quit()
 
     @staticmethod
