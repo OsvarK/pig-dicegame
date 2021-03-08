@@ -14,12 +14,8 @@ class User_interface():
     def start():
         """Start of program"""
         User_interface.higescore = highscore.Highscore()
-
-        # TODO: load higescore.players
-        # Har laddar vi in dem sparade spelarna
         User_interface.higescore.create_players()
-        print(User_interface.higescore.highscore)
-        print(User_interface.higescore.players)
+
         User_interface.main_menu()
 
     @staticmethod
@@ -46,7 +42,7 @@ class User_interface():
         elif option == 3:
             User_interface.change_player_profil()
         elif option == 4:
-            #TODO: Spara
+            User_interface.higescore.create_highscore()
             quit()
 
     @staticmethod
@@ -85,14 +81,15 @@ class User_interface():
                     exist_flag = True
             if not exist_flag:
                 break
-        User_interface.higescore.players.add(new_player)
+        User_interface.higescore.players.append(new_player)
         # TODO: Saves higescore.players
+        User_interface.higescore.create_highscore()
         User_interface.main_menu()
 
     @staticmethod
     def change_player_profil():
         """Change a player profile"""
-        # TODO: Saves higescore.players after creation
+        User_interface.higescore.create_highscore()
         pass
 
     @staticmethod
@@ -116,7 +113,8 @@ class User_interface():
         """Method that displays taht the game ended"""
         # player is ref to winner
         print(player_ref.username + " won the game!")
-        # TODO: Saves higescore.players after creation
+        User_interface.higescore.create_highscore()
         #User_interface.higescore.create_highscore()
+
 
 User_interface.start()
