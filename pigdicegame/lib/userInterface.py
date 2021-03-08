@@ -24,10 +24,22 @@ class User_interface():
     @staticmethod
     def main_menu():
         """Main menu of the program"""
-        print("1. Play game")
-        print("2. Create player profile")
-        print("3. Change player profile")
-        print("4. Exit")
+        option = User_interface.input_handler_int_range(
+            "1. Play game \n" +
+            "2. Create player profile \n" +
+            "3. Change player profile \n" +
+            "4. Exit \n",
+            1, 4
+        )
+        if option == 1:
+            User_interface.game_setup_menu()
+        elif option == 2:
+            User_interface.create_player_profile()
+        elif option == 3:
+            User_interface.change_player_profil()
+        elif option == 4:
+            User_interface.higescore.create_players()
+            quit()
 
     @staticmethod
     def throw_dice_loop(player):
@@ -54,13 +66,13 @@ class User_interface():
         pass
 
     @staticmethod
-    def create_player_profiel():
+    def create_player_profile():
         """Creates a player profile"""
         User_interface.create_highscore()   # Saves data after creation
         pass
 
     @staticmethod
-    def change_player_profiel():
+    def change_player_profil():
         """Change a player profile"""
         User_interface.create_highscore()   # Saves data after change
         pass
@@ -81,7 +93,7 @@ class User_interface():
         while True:
             try:
                 value = int(input(question))
-                if value in range(min, max + 1):
+                if value in range(min + 1, max + 1):
                     return value
                 else:
                     print(f"Input has to in range of {min} - {max}")
@@ -92,7 +104,4 @@ class User_interface():
     def game_ended(player):
         """Method that displays taht the game ended"""
         # player is ref to winner
-        User_interface.create_highscore()   # Saves data after game
-
-
-User_interface.input_handler_int_range("he", 0, 1)
+        User_interface.higescore.create_players()   # Saves data after game
