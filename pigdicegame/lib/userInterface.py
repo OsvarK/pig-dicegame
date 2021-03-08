@@ -1,4 +1,5 @@
 import highscore
+import player
 
 
 class User_interface():
@@ -44,7 +45,7 @@ class User_interface():
             quit()
 
     @staticmethod
-    def throw_dice_loop(player):
+    def throw_dice_loop(player_ref):
         """
         This function controlls the flow of the dice loop,
         the players ability to throw dices.
@@ -55,35 +56,38 @@ class User_interface():
         return True
 
     @staticmethod
-    def display_whos_turn(player):
+    def display_whos_turn(player_ref):
         """Display whos turn it is"""
-        print("New turn: " + player.username)
+        print("New turn: " + player_ref.username)
         # Varje turn så måste vi veta vems turn det är
-        pass
-
-    @staticmethod
-    def display_dice_throw(player, dice):
-        """Display a dice throw"""
-        print(player.username + f" rolled: {dice}")
         pass
 
     @staticmethod
     def create_player_profile():
         """Creates a player profile"""
-        User_interface.create_highscore()   # Saves data after creation
-        pass
+        while True:
+            in_from_client = input("Enter a username for this player:")
+            if in_from_client == "quit":
+                User_interface.main_menu()
+                return
+            new_player = player.Player(in_from_client)
+            exist_flag = False
+            print(User_interface.higescore.players)
+            for p in User_interface.higescore.players:
+                if p.username == new_player.username:
+                    print("Player with that name already exist!")
+                    print("Type 'quit' to cancel")
+                    exist_flag = True
+            if not exist_flag:
+                break
+        User_interface.higescore.players.add(new_player)
+        User_interface.higescore.create_players()  # Saves data after creation
+        User_interface.main_menu()
 
     @staticmethod
     def change_player_profil():
         """Change a player profile"""
-        User_interface.create_highscore()   # Saves data after change
-        pass
-
-    @staticmethod
-    def input_handler_string(question):
-        """Handles input from user with error handling,
-        returning input as string
-        """
+        User_interface.higescore.create_players()   # Saves data after change
         pass
 
     @staticmethod
@@ -103,7 +107,11 @@ class User_interface():
                 print("Input has to be an integer")
 
     @staticmethod
-    def game_ended(player):
+    def game_ended(player_ref):
         """Method that displays taht the game ended"""
         # player is ref to winner
-        User_interface.higescore.create_players()   # Saves data after game
+        print(player_ref.username + " won the game!")
+        User_interface.higescore.create_players()  # Saves data after game
+
+
+#User_interface.start()
