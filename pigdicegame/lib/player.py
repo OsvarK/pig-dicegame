@@ -8,7 +8,7 @@ class Player(object):
         self.score = 0
         self.username = username
         self.wins = 0
-        self.higest_score_in_one_turn = []
+        self.higest_score_in_one_turn = 0
         self.fastest_win = 0
 
     def throw_dice(self):

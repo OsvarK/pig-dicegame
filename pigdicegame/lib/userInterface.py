@@ -99,10 +99,17 @@ class User_interface():
 
     @staticmethod
     def change_player_profil():
-        """Change a player profile"""
-        
+        """Change a player profile's username """
+        player = User_interface.find_player()
+        old_name = player.username
+        try:
+            user = str(input("Enter the username you wish to change to: "))
+        except:
+            print("InputError in change_player_profil")
+        player.username = user
         User_interface.higescore.create_highscore()
-        pass
+        print("Username succesfully changed from " + old_name + " to " + player.username)
+        User_interface.main_menu()
 
     @staticmethod
     def input_handler_int_range(question, min, max):
