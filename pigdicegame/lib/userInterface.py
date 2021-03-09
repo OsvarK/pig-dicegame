@@ -1,5 +1,6 @@
 import highscore
 import player
+import bot
 
 
 class User_interface():
@@ -15,15 +16,38 @@ class User_interface():
         """Start of program"""
         User_interface.higescore = highscore.Highscore()
         User_interface.higescore.create_players()
-
         User_interface.main_menu()
 
     @staticmethod
     def game_setup_menu():
-        """Setups up the game, how many players and how many bots"""
+        """Setups up the game, how many players and how many bots and adds them to a list"""
+        players = []
+        player = None
+        bots = 0
+        while player == None:
+            try:
+                user = str(input("Enter the username of your profile: "))
+                for p in User_interface.higescore.players:
+                    if p.username.lower() == user.lower():
+                        players.append(p)
+                        player = p
+                        break
+                if player == None:
+                    print("Player profile cannot be found. Please try again")
+            except:
+                pass
+        while bots == 0:
+            try:
+                bots = range(int(input("Enter the number of bots you'd like to play against: ")))
+                for b in bots:
+                    players.append(bot.Bot(""))
+            except:
+                print("An integer must be entered, please try again")
+        
         # Här kan man säga till vilka spelar profiler som ska vara med i spelet &
         # hur många botar
-        pass
+        
+        # HÄR BEHÖVER VI GÖRA NÅGOT MED VÄRDENA. Vi har nu en lista av spelare och bottar
 
     @staticmethod
     def main_menu():
@@ -67,7 +91,7 @@ class User_interface():
     def create_player_profile():
         """Creates a player profile"""
         while True:
-            in_from_client = input("Enter a username for this player:")
+            in_from_client = input("Enter a username for this player: ")
             if in_from_client == "quit":
                 User_interface.main_menu()
                 return
@@ -89,6 +113,7 @@ class User_interface():
     @staticmethod
     def change_player_profil():
         """Change a player profile"""
+        
         User_interface.higescore.create_highscore()
         pass
 
@@ -101,7 +126,7 @@ class User_interface():
         while True:
             try:
                 value = int(input(question))
-                if value in range(min + 1, max + 1):
+                if value in range(min, max):
                     return value
                 else:
                     print(f"Input has to in range of {min} - {max}")
@@ -110,7 +135,7 @@ class User_interface():
 
     @staticmethod
     def game_ended(player_ref):
-        """Method that displays taht the game ended"""
+        """Method that displays that the game ended"""
         # player is ref to winner
         print(player_ref.username + " won the game!")
         User_interface.higescore.create_highscore()
