@@ -19,19 +19,21 @@ class Userinterface():
         Userinterface.higescore.create_players()
         Userinterface.main_menu()
 
+
     @staticmethod
     def game_setup_menu():
         """Setups up the game, how many players and how many bots
         and adds them to a list"""
         players = []
         the_player = Userinterface.find_player()
-        the_player.append(player)
+        players.append(the_player)
         bots = range(Userinterface.input_handler_int_range(
             "Enter the number of bots (min 1, max 4) you'd like to play " +
             "against: ", 1, 4))
         for _ in bots:
             players.append(bot.Bot(""))
-        game.Game.start_game(players)
+        new_game = game.Game(Userinterface)
+        new_game.start_game(players)
 
 
     @staticmethod
