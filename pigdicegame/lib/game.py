@@ -26,11 +26,11 @@ class Game:
         turn_cycle = 0
         while True:
             player = players[player_index]
-            userInterface.User_interface.display_whos_turn(player)
+            userInterface.Userinterface.display_whos_turn(player)
             if isinstance(player, Bot):
                 points = player.get_dice_throws()
             else:
-                points_accumulated = userInterface.User_interface.\
+                points_accumulated = userInterface.Userinterface.\
                     throw_dice_loop(player)
                 player.is_higest_score_in_one_turn(points_accumulated)
                 points = sum(points_accumulated)
@@ -50,5 +50,5 @@ class Game:
             arg1 (Player): the winner of the game.
             arg2 (int): on what turn cycle the game was ended.
         """
-        userInterface.User_interface.game_ended(player)
+        userInterface.Userinterface.game_ended(player)
         player.i_win(turn_cycle)
