@@ -14,7 +14,7 @@ class Bot(Player):
         if username is None:
             username = self.get_random_botname(
                 os.path.dirname(os.path.realpath(__file__)) +
-                "\\resources\\LocalHighscore.json")
+                "\\resources\\botnames.txt")
         Player.__init__(self, username)
 
     def calculate_amount_of_throws(self):
