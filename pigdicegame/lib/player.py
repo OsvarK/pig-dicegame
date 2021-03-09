@@ -24,7 +24,7 @@ class Player(object):
             self.higest_score_in_one_turn = new_higescore
 
     def is_fastest_win(self, on_turn):
-        """Check if this is the fastes win"""
+        """Check if this is the fastest win"""
         if on_turn < self.fastest_win:
             self.fastest_win = on_turn
 

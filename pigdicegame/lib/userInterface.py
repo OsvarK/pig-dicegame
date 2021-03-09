@@ -31,7 +31,7 @@ class UserInterface():
             "Enter the number of bots (min 1, max 4) you'd like to play " +
             "against: ", 1, 4))
         for _ in bots:
-            players.append(bot.Bot(""))
+            players.append(bot.Bot(None))
         new_game = game.Game(UserInterface)
         new_game.start_game(players)
 
@@ -64,14 +64,15 @@ class UserInterface():
         """
         choice = ""
         points_accumulated = 0
-        while choice != "N":
+        while choice.upper() != "N":
             choice = UserInterface.throw_dice_input()
-            dice_result = player_ref.throw_dice()
-            if dice_result == 1:
-                print("You rolled a 1. You lost your score" +
-                      "and it's the next players turn")
-                return 0
-            points_accumulated += dice_result
+            if choice.upper() == "Y":
+                dice_result = player_ref.throw_dice()
+                if dice_result == 1:
+                    print("You rolled a 1. You lost your score" +
+                        " and it's the next players turn")
+                    return 0
+                points_accumulated += dice_result
         return points_accumulated
 
     @staticmethod
@@ -81,8 +82,7 @@ class UserInterface():
             try:
                 user_input = str(
                     input("Do you wish to throw the dice? (Y/N): "))
-                user_input.capitalize()
-                if user_input == "Y" or user_input == "N":
+                if user_input.upper() == "Y" or user_input.upper() == "N":
                     return user_input
                 print("You need to enter Y to throw the dice or N to hold")
             except ValueError:
@@ -175,4 +175,4 @@ class UserInterface():
                 print("Error in find_player")
 
 
-#Userinterface.start()
+#UserInterface.start()
