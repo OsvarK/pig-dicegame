@@ -13,7 +13,8 @@ class Bot(Player):
         """Class contrctor: If no username is given, it will generate one"""
         if username is None:
             username = self.get_random_botname(
-                "pigdicegame/resources/botnames.txt")
+                os.path.dirname(os.path.realpath(__file__)) +
+                "\\resources\\LocalHighscore.json")
         Player.__init__(self, username)
 
     def calculate_amount_of_throws(self):

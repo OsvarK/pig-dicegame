@@ -2,6 +2,7 @@
 Module to handle everything connected to data for highscores
 """
 
+import os
 import json
 from player import Player
 
@@ -29,18 +30,24 @@ class Highscore():
     def save_data(self):
         """Save data to storage"""
         try:
-            with open("pigdicegame/resources/LocalHighscore.json", "w")as file:
+            with open(os.path.dirname(os.path.realpath(__file__)) +
+                      "\\resources\\LocalHighscore.json", "w")as file:
                 json.dump(self.highscore, file, indent=2)
         except FileNotFoundError:
             print("Error: File Not Found")
+        except json.JSONDecodeError:
+            pass
 
     def load_data(self):
         """Fetch data from storage"""
         try:
-            with open("pigdicegame/resources/LocalHighscore.json", "r")as file:
+            with open(os.path.dirname(os.path.realpath(__file__)) +
+                      "\\resources\\LocalHighscore.json", "r")as file:
                 self.highscore = json.load(file)
         except FileNotFoundError:
             print("Error: File not found")
+        except json.JSONDecodeError:
+            pass
 
     def create_players(self):
         """ Creates players from the loaded data.

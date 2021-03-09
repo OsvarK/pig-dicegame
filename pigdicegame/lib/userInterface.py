@@ -173,6 +173,3 @@ class UserInterface():
                     print("Player profile cannot be found. Please try again")
             except ValueError:
                 print("Error in find_player")
-
-
-#UserInterface.start()
