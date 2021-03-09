@@ -4,4 +4,5 @@ htmlcov/
 coverage_results/
 .coverage
 .venv
+.vscode
 docs/
