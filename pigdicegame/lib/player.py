@@ -20,7 +20,7 @@ class Player(object):
 
     def is_higest_score_in_one_turn(self, new_higescore):
         """Check if this is the new higescore in one turn"""
-        if sum(new_higescore) > sum(self.higest_score_in_one_turn):
+        if new_higescore > new_higescore:
             self.higest_score_in_one_turn = new_higescore
 
     def is_fastest_win(self, on_turn):

@@ -33,7 +33,7 @@ class Game:
                 points_accumulated = self.user_interface.\
                     throw_dice_loop(player)
                 player.is_higest_score_in_one_turn(points_accumulated)
-                points = sum(points_accumulated)
+                points = points_accumulated
             player.score += points
             if player_index == (len(players) - 1):
                 player_index = 0
