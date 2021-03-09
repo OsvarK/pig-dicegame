@@ -1,5 +1,7 @@
 import highscore
 import player
+import bot
+
 
 
 class User_interface():
@@ -15,15 +17,24 @@ class User_interface():
         """Start of program"""
         User_interface.higescore = highscore.Highscore()
         User_interface.higescore.create_players()
-
         User_interface.main_menu()
 
     @staticmethod
     def game_setup_menu():
-        """Setups up the game, how many players and how many bots"""
+        """Setups up the game, how many players and how many bots and adds them to a list"""
+        players = []
+        player = User_interface.find_player()
+        players.append(player)
+        bots = range(User_interface.input_handler_int_range("Enter the number of bots (min 1, max 4) you'd like to play against: ", 1, 4))
+        for b in bots:
+            players.append(bot.Bot(""))      
+        
+        # Game.start_game(players) - denna behöver importera game men då skapas ett import error enligt nedan:
+        # ImportError: cannot import name 'Game' from partially initialized module 'game' (most likely due to a circular import)
+
         # Här kan man säga till vilka spelar profiler som ska vara med i spelet &
         # hur många botar
-        pass
+        
 
     @staticmethod
     def main_menu():
@@ -51,10 +62,35 @@ class User_interface():
         This function controlls the flow of the dice loop,
         the players ability to throw dices.
         """
+        choice = ""
+        points_accumulated = 0
+        while not choice == "N":
+            choice = User_interface.throw_dice_input()
+            dice_result = player_ref.throw_dice()
+            if dice_result == 1:
+                print("You rolled a 1. You lost your score and it's the next players turn")
+                return 0
+            else: 
+                points_accumulated += dice_result
+            
+        return points_accumulated
+
         # TODO: Make it possible to throw dice
         # and the logic to return points
         # return the points as a list
-        return True
+
+    @staticmethod
+    def throw_dice_input():
+        while True:
+            try:
+                user_input = str(input("Do you wish to throw the dice? (Y/N): "))
+                if user_input == "Y" or user_input == "N":
+                    return user_input
+                else:
+                   print("You need to enter Y to throw the dice or N to hold") 
+            except:
+                print("You need to enter Y or N")
+
 
     @staticmethod
     def display_whos_turn(player_ref):
@@ -67,7 +103,7 @@ class User_interface():
     def create_player_profile():
         """Creates a player profile"""
         while True:
-            in_from_client = input("Enter a username for this player:")
+            in_from_client = input("Enter a username for this player: ")
             if in_from_client == "quit":
                 User_interface.main_menu()
                 return
@@ -88,9 +124,17 @@ class User_interface():
 
     @staticmethod
     def change_player_profil():
-        """Change a player profile"""
+        """Change a player profile's username """
+        player = User_interface.find_player()
+        old_name = player.username
+        try:
+            user = str(input("Enter the username you wish to change to: "))
+        except:
+            print("InputError in change_player_profil")
+        player.username = user
         User_interface.higescore.create_highscore()
-        pass
+        print(f"Username succesfully changed from {old_name} to {player.username}")
+        User_interface.main_menu()
 
     @staticmethod
     def input_handler_int_range(question, min, max):
@@ -101,7 +145,7 @@ class User_interface():
         while True:
             try:
                 value = int(input(question))
-                if value in range(min + 1, max + 1):
+                if value in range(min, max):
                     return value
                 else:
                     print(f"Input has to in range of {min} - {max}")
@@ -110,11 +154,25 @@ class User_interface():
 
     @staticmethod
     def game_ended(player_ref):
-        """Method that displays taht the game ended"""
+        """Method that displays that the game ended"""
         # player is ref to winner
         print(player_ref.username + " won the game!")
         User_interface.higescore.create_highscore()
         #User_interface.higescore.create_highscore()
 
+    @staticmethod
+    def find_player():
+        player = None
+        while player == None:
+            try:
+                user = str(input("Enter the username of your profile: "))
+                for p in User_interface.higescore.players:
+                    if p.username.lower() == user.lower():
+                        player = p
+                        return p
+                if player == None:
+                    print("Player profile cannot be found. Please try again")
+            except:
+                print("Error in find_player")
 
 User_interface.start()
