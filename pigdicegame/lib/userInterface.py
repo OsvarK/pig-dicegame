@@ -3,6 +3,7 @@ import player
 import bot
 
 
+
 class User_interface():
     """
     This class controlls the input and output to the player.
@@ -36,14 +37,10 @@ class User_interface():
                     print("Player profile cannot be found. Please try again")
             except:
                 pass
-        while bots == 0:
-            try:
-                bots = range(int(input("Enter the number of bots you'd like to play against: ")))
-                for b in bots:
-                    players.append(bot.Bot(""))
-            except:
-                print("An integer must be entered, please try again")
-        
+        bots = range(User_interface.input_handler_int_range("Enter the number of bots (min 1, max 4) you'd like to play against: ", 1, 4))
+        for b in bots:
+            players.append(bot.Bot(""))
+
         # Här kan man säga till vilka spelar profiler som ska vara med i spelet &
         # hur många botar
         
