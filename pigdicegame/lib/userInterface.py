@@ -1,7 +1,7 @@
 import highscore
 import player
 import bot
-
+import game
 
 
 class User_interface():
@@ -21,20 +21,18 @@ class User_interface():
 
     @staticmethod
     def game_setup_menu():
-        """Setups up the game, how many players and how many bots and adds them to a list"""
+        """Setups up the game, how many players and how many bots
+        and adds them to a list"""
         players = []
-        player = User_interface.find_player()
-        players.append(player)
-        bots = range(User_interface.input_handler_int_range("Enter the number of bots (min 1, max 4) you'd like to play against: ", 1, 4))
-        for b in bots:
-            players.append(bot.Bot(""))      
-        
-        # Game.start_game(players) - denna behöver importera game men då skapas ett import error enligt nedan:
-        # ImportError: cannot import name 'Game' from partially initialized module 'game' (most likely due to a circular import)
+        the_player = User_interface.find_player()
+        the_player.append(player)
+        bots = range(User_interface.input_handler_int_range(
+            "Enter the number of bots (min 1, max 4) you'd like to play " +
+            "against: ", 1, 4))
+        for _ in bots:
+            players.append(bot.Bot(""))
+        game.Game.start_game(players)
 
-        # Här kan man säga till vilka spelar profiler som ska vara med i spelet &
-        # hur många botar
-        
 
     @staticmethod
     def main_menu():
@@ -64,31 +62,28 @@ class User_interface():
         """
         choice = ""
         points_accumulated = 0
-        while not choice == "N":
+        while choice != "N":
             choice = User_interface.throw_dice_input()
             dice_result = player_ref.throw_dice()
             if dice_result == 1:
-                print("You rolled a 1. You lost your score and it's the next players turn")
+                print("You rolled a 1. You lost your score" +
+                      "and it's the next players turn")
                 return 0
-            else: 
-                points_accumulated += dice_result
-            
+            points_accumulated += dice_result
         return points_accumulated
-
-        # TODO: Make it possible to throw dice
-        # and the logic to return points
-        # return the points as a list
 
     @staticmethod
     def throw_dice_input():
+        """docstring"""
         while True:
             try:
-                user_input = str(input("Do you wish to throw the dice? (Y/N): "))
+                user_input = str(
+                    input("Do you wish to throw the dice? (Y/N): "))
+                user_input.capitalize()
                 if user_input == "Y" or user_input == "N":
                     return user_input
-                else:
-                   print("You need to enter Y to throw the dice or N to hold") 
-            except:
+                print("You need to enter Y to throw the dice or N to hold")
+            except ValueError:
                 print("You need to enter Y or N")
 
 
@@ -125,19 +120,20 @@ class User_interface():
     @staticmethod
     def change_player_profil():
         """Change a player profile's username """
-        player = User_interface.find_player()
-        old_name = player.username
+        the_player = User_interface.find_player()
+        old_name = the_player.username
         try:
             user = str(input("Enter the username you wish to change to: "))
-        except:
+        except ValueError:
             print("InputError in change_player_profil")
         player.username = user
         User_interface.higescore.create_highscore()
-        print(f"Username succesfully changed from {old_name} to {player.username}")
+        print("Username succesfully changed from " +
+        f"{old_name} to {the_player.username}")
         User_interface.main_menu()
 
     @staticmethod
-    def input_handler_int_range(question, min, max):
+    def input_handler_int_range(question, min_int, max_int):
         """Handles int input from user with error handling and checks if int
         is in range of min & max param, returning int inputed int.
         """
@@ -145,10 +141,10 @@ class User_interface():
         while True:
             try:
                 value = int(input(question))
-                if value in range(min, max):
+                if value in range(min_int, max_int):
                     return value
                 else:
-                    print(f"Input has to in range of {min} - {max}")
+                    print(f"Input has to in range of {min_int} - {max_int}")
             except ValueError:
                 print("Input has to be an integer")
 
@@ -162,17 +158,19 @@ class User_interface():
 
     @staticmethod
     def find_player():
-        player = None
-        while player == None:
+        """Docstring"""
+        the_player = None
+        while the_player is None:
             try:
                 user = str(input("Enter the username of your profile: "))
-                for p in User_interface.higescore.players:
-                    if p.username.lower() == user.lower():
-                        player = p
-                        return p
-                if player == None:
+                for profile in User_interface.higescore.players:
+                    if profile.username.lower() == user.lower():
+                        the_player = profile
+                        return profile
+                if the_player is None:
                     print("Player profile cannot be found. Please try again")
-            except:
+            except ValueError:
                 print("Error in find_player")
+
 
 User_interface.start()
