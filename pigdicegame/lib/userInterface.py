@@ -4,7 +4,7 @@ import bot
 import game
 
 
-class Userinterface():
+class UserInterface():
     """
     This class controlls the input and output to the player.
     """
@@ -15,9 +15,9 @@ class Userinterface():
     @staticmethod
     def start():
         """Start of program"""
-        Userinterface.higescore = highscore.Highscore()
-        Userinterface.higescore.create_players()
-        Userinterface.main_menu()
+        UserInterface.higescore = highscore.Highscore()
+        UserInterface.higescore.create_players()
+        UserInterface.main_menu()
 
 
     @staticmethod
@@ -25,21 +25,21 @@ class Userinterface():
         """Setups up the game, how many players and how many bots
         and adds them to a list"""
         players = []
-        the_player = Userinterface.find_player()
+        the_player = UserInterface.find_player()
         players.append(the_player)
-        bots = range(Userinterface.input_handler_int_range(
+        bots = range(UserInterface.input_handler_int_range(
             "Enter the number of bots (min 1, max 4) you'd like to play " +
             "against: ", 1, 4))
         for _ in bots:
             players.append(bot.Bot(""))
-        new_game = game.Game(Userinterface)
+        new_game = game.Game(UserInterface)
         new_game.start_game(players)
 
 
     @staticmethod
     def main_menu():
         """Main menu of the program"""
-        option = Userinterface.input_handler_int_range(
+        option = UserInterface.input_handler_int_range(
             "1. Play game \n" +
             "2. Create player profile \n" +
             "3. Change player profile \n" +
@@ -47,13 +47,13 @@ class Userinterface():
             1, 4
         )
         if option == 1:
-            Userinterface.game_setup_menu()
+            UserInterface.game_setup_menu()
         elif option == 2:
-            Userinterface.create_player_profile()
+            UserInterface.create_player_profile()
         elif option == 3:
-            Userinterface.change_player_profil()
+            UserInterface.change_player_profil()
         elif option == 4:
-            Userinterface.higescore.create_highscore()
+            UserInterface.higescore.create_highscore()
             quit()
 
     @staticmethod
@@ -65,7 +65,7 @@ class Userinterface():
         choice = ""
         points_accumulated = 0
         while choice != "N":
-            choice = Userinterface.throw_dice_input()
+            choice = UserInterface.throw_dice_input()
             dice_result = player_ref.throw_dice()
             if dice_result == 1:
                 print("You rolled a 1. You lost your score" +
@@ -102,37 +102,37 @@ class Userinterface():
         while True:
             in_from_client = input("Enter a username for this player: ")
             if in_from_client == "quit":
-                Userinterface.main_menu()
+                UserInterface.main_menu()
                 return
             new_player = player.Player(in_from_client)
             exist_flag = False
-            print(Userinterface.higescore.players)
-            for p in Userinterface.higescore.players:
+            print(UserInterface.higescore.players)
+            for p in UserInterface.higescore.players:
                 if p.username == new_player.username:
                     print("Player with that name already exist!")
                     print("Type 'quit' to cancel")
                     exist_flag = True
             if not exist_flag:
                 break
-        Userinterface.higescore.players.append(new_player)
+        UserInterface.higescore.players.append(new_player)
         # TODO: Saves higescore.players
-        Userinterface.higescore.create_highscore()
-        Userinterface.main_menu()
+        UserInterface.higescore.create_highscore()
+        UserInterface.main_menu()
 
     @staticmethod
     def change_player_profil():
         """Change a player profile's username """
-        the_player = Userinterface.find_player()
+        the_player = UserInterface.find_player()
         old_name = the_player.username
         try:
             user = str(input("Enter the username you wish to change to: "))
         except ValueError:
             print("InputError in change_player_profil")
         player.username = user
-        Userinterface.higescore.create_highscore()
+        UserInterface.higescore.create_highscore()
         print("Username succesfully changed from " +
               f"{old_name} to {the_player.username}")
-        Userinterface.main_menu()
+        UserInterface.main_menu()
 
     @staticmethod
     def input_handler_int_range(question, min_int, max_int):
@@ -155,7 +155,7 @@ class Userinterface():
         """Method that displays that the game ended"""
         # player is ref to winner
         print(player_ref.username + " won the game!")
-        Userinterface.higescore.create_highscore()
+        UserInterface.higescore.create_highscore()
         #User_interface.higescore.create_highscore()
 
     @staticmethod
@@ -165,7 +165,7 @@ class Userinterface():
         while the_player is None:
             try:
                 user = str(input("Enter the username of your profile: "))
-                for profile in Userinterface.higescore.players:
+                for profile in UserInterface.higescore.players:
                     if profile.username.lower() == user.lower():
                         the_player = profile
                         return profile
@@ -175,4 +175,4 @@ class Userinterface():
                 print("Error in find_player")
 
 
-Userinterface.start()
+#Userinterface.start()
