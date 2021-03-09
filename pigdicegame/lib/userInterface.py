@@ -23,28 +23,18 @@ class User_interface():
     def game_setup_menu():
         """Setups up the game, how many players and how many bots and adds them to a list"""
         players = []
-        player = None
-        bots = 0
-        while player == None:
-            try:
-                user = str(input("Enter the username of your profile: "))
-                for p in User_interface.higescore.players:
-                    if p.username.lower() == user.lower():
-                        players.append(p)
-                        player = p
-                        break
-                if player == None:
-                    print("Player profile cannot be found. Please try again")
-            except:
-                pass
+        player = User_interface.find_player()
+        players.append(player)
         bots = range(User_interface.input_handler_int_range("Enter the number of bots (min 1, max 4) you'd like to play against: ", 1, 4))
         for b in bots:
-            players.append(bot.Bot(""))
+            players.append(bot.Bot(""))      
+        
+        # Game.start_game(players) - denna behöver importera game men då skapas ett import error enligt nedan:
+        # ImportError: cannot import name 'Game' from partially initialized module 'game' (most likely due to a circular import)
 
         # Här kan man säga till vilka spelar profiler som ska vara med i spelet &
         # hur många botar
         
-        # HÄR BEHÖVER VI GÖRA NÅGOT MED VÄRDENA. Vi har nu en lista av spelare och bottar
 
     @staticmethod
     def main_menu():
@@ -138,5 +128,19 @@ class User_interface():
         User_interface.higescore.create_highscore()
         #User_interface.higescore.create_highscore()
 
+    @staticmethod
+    def find_player():
+        player = None
+        while player == None:
+            try:
+                user = str(input("Enter the username of your profile: "))
+                for p in User_interface.higescore.players:
+                    if p.username.lower() == user.lower():
+                        player = p
+                        return p
+                if player == None:
+                    print("Player profile cannot be found. Please try again")
+            except:
+                print("Error in find_player")
 
 User_interface.start()
