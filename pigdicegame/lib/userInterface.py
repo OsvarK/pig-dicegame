@@ -62,10 +62,35 @@ class User_interface():
         This function controlls the flow of the dice loop,
         the players ability to throw dices.
         """
+        choice = ""
+        points_accumulated = 0
+        while not choice == "N":
+            choice = User_interface.throw_dice_input()
+            dice_result = player_ref.throw_dice()
+            if dice_result == 1:
+                print("You rolled a 1. You lost your score and it's the next players turn")
+                return 0
+            else: 
+                points_accumulated += dice_result
+            
+        return points_accumulated
+
         # TODO: Make it possible to throw dice
         # and the logic to return points
         # return the points as a list
-        return True
+
+    @staticmethod
+    def throw_dice_input():
+        while True:
+            try:
+                user_input = str(input("Do you wish to throw the dice? (Y/N): "))
+                if user_input == "Y" or user_input == "N":
+                    return user_input
+                else:
+                   print("You need to enter Y to throw the dice or N to hold") 
+            except:
+                print("You need to enter Y or N")
+
 
     @staticmethod
     def display_whos_turn(player_ref):
@@ -108,7 +133,7 @@ class User_interface():
             print("InputError in change_player_profil")
         player.username = user
         User_interface.higescore.create_highscore()
-        print("Username succesfully changed from " + old_name + " to " + player.username)
+        print(f"Username succesfully changed from {old_name} to {player.username}")
         User_interface.main_menu()
 
     @staticmethod
