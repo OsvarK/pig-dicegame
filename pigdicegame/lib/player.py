@@ -14,7 +14,6 @@ class Player(object):
     def throw_dice(self):
         """Throws the dice"""
         dice = random.randint(1, 6)
-        # Doing printint here cuz of circular import.
         print(self.username + f" rolled: {dice}")
         return dice
 

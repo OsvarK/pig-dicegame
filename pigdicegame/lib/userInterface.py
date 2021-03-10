@@ -93,8 +93,6 @@ class UserInterface():
     def display_whos_turn(player_ref):
         """Display whos turn it is"""
         print("New turn: " + player_ref.username)
-        # Varje turn så måste vi veta vems turn det är
-        pass
 
     @staticmethod
     def create_player_profile():
@@ -115,7 +113,6 @@ class UserInterface():
             if not exist_flag:
                 break
         UserInterface.higescore.players.append(new_player)
-        # TODO: Saves higescore.players
         UserInterface.higescore.create_highscore()
         UserInterface.main_menu()
 
