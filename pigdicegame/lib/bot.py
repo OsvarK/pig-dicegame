@@ -9,8 +9,11 @@ class Bot(Player):
     inheritanced by the Player class.
     """
 
-    def __init__(self, username):
-        """Class contrctor: If no username is given, it will generate one"""
+    def __init__(self, username, risk_taker):
+        """Class contrctor: If no username is given, it will generate one
+        risk_taker param: lower int equals a less risk taker
+        """
+        self.risk_taker = risk_taker
         if username is None:
             username = self.get_random_botname(
                 os.path.dirname(os.path.realpath(__file__)) +
@@ -19,7 +22,7 @@ class Bot(Player):
 
     def calculate_amount_of_throws(self):
         """Decide how many throws the bot wants to do"""
-        odds = 1/6
+        odds = 1/6 * self.risk_taker
         how_many_throws = 0
         while True:
             chance = int(100 * (odds * how_many_throws)) + 100
@@ -42,7 +45,8 @@ class Bot(Player):
 
     def want_to_bank(self, total_points, dice_throws):
         """Checks if the bot wants to bank its points."""
-        return dice_throws >= 2 and total_points > dice_throws * 3
+        return dice_throws >= 2 and \
+            total_points > (dice_throws * 3) + self.risk_taker
 
     def get_random_botname(self, path):
         """Retrive a random bot name"""

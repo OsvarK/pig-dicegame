@@ -1,5 +1,6 @@
 import unittest
 import sys
+import random
 
 sys.path.append("pigdicegame/lib")
 
@@ -11,27 +12,21 @@ class TestPlayer(unittest.TestCase):
     def test_throw_dice(self):
         """Tests Player:throwDice"""
         player = Player("Tester")
-        for i in range(1, 20):
+        for _ in range(1, 20):
             self.assertTrue(player.throw_dice() in range(0, 7))
 
-    def test_load_date(self):
-        pass
-
-    def test_save_data(self):
-        pass
-
     def test_is_higest_score_in_one_turn(self):
+        """Tests player:is_higest_score_in_one_tur function"""
         player = Player("Tester")
-        player.is_higest_score_in_one_turn([5, 5, 5, 6])
-        scoreSum = sum(player.higest_score_in_one_turn)
-        self.assertTrue(player.higest_score_in_one_turn == [5, 5, 5, 6])
-        self.assertTrue(scoreSum == sum([5, 5, 5, 6]))
-        player.is_higest_score_in_one_turn([5, 2, 6])
-        scoreSum = sum(player.higest_score_in_one_turn)
-        self.assertFalse(player.higest_score_in_one_turn == [5, 2, 6])
-        self.assertFalse(scoreSum == sum([5, 2, 6]))
+        player.higest_score_in_one_turn = 10
+        player.is_higest_score_in_one_turn(20)
+        self.assertTrue(player.higest_score_in_one_turn, 20)
+        player.higest_score_in_one_turn = 10
+        player.is_higest_score_in_one_turn(5)
+        self.assertTrue(player.higest_score_in_one_turn, 10)
 
     def test_is_fastest_win(self):
+        """Tests player:is_fastest_win function"""
         player = Player("Tester")
         player.fastest_win = 10
         player.is_fastest_win(12)
@@ -42,6 +37,7 @@ class TestPlayer(unittest.TestCase):
         self.assertTrue(player.fastest_win == 5)
 
     def test_i_win(self):
+        """Tests player:i_win function"""
         player = Player("Tester")
         player.wins = 10
         player.i_win(99)

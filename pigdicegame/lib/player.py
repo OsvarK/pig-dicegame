@@ -14,13 +14,12 @@ class Player(object):
     def throw_dice(self):
         """Throws the dice"""
         dice = random.randint(1, 6)
-        # Doing printint here cuz of circular import.
         print(self.username + f" rolled: {dice}")
         return dice
 
     def is_higest_score_in_one_turn(self, new_higescore):
         """Check if this is the new higescore in one turn"""
-        if new_higescore > new_higescore:
+        if new_higescore > self.higest_score_in_one_turn:
             self.higest_score_in_one_turn = new_higescore
 
     def is_fastest_win(self, on_turn):

@@ -10,7 +10,7 @@ class UserInterface():
     """
 
     # Ref to higescore class
-    higescore = None
+    higescore = highscore.Highscore()
 
     @staticmethod
     def start():
@@ -30,8 +30,10 @@ class UserInterface():
         bots = range(UserInterface.input_handler_int_range(
             "Enter the number of bots (min 1, max 4) you'd like to play " +
             "against: ", 1, 4))
-        for _ in bots:
-            players.append(bot.Bot(None))
+
+        for i in bots:
+            players.append(bot.Bot(None, UserInterface.input_handler_int_range(
+            f"Enter the risk factor bot{i} (1 - 5), lower number equals less risk ", 1, 5)))
         new_game = game.Game(UserInterface)
         new_game.start_game(players)
 
@@ -93,8 +95,6 @@ class UserInterface():
     def display_whos_turn(player_ref):
         """Display whos turn it is"""
         print("New turn: " + player_ref.username)
-        # Varje turn så måste vi veta vems turn det är
-        pass
 
     @staticmethod
     def create_player_profile():
@@ -115,7 +115,6 @@ class UserInterface():
             if not exist_flag:
                 break
         UserInterface.higescore.players.append(new_player)
-        # TODO: Saves higescore.players
         UserInterface.higescore.create_highscore()
         UserInterface.main_menu()
 
@@ -143,20 +142,18 @@ class UserInterface():
         while True:
             try:
                 value = int(input(question))
-                if value in range(min_int, max_int):
+                if value in range(min_int, max_int + 1):
                     return value
                 else:
-                    print(f"Input has to in range of {min_int} - {max_int}")
+                    print(f"Input has to be in range of ({min_int} - {max_int})")
             except ValueError:
                 print("Input has to be an integer")
 
     @staticmethod
     def game_ended(player_ref):
         """Method that displays that the game ended"""
-        # player is ref to winner
         print(player_ref.username + " won the game!")
         UserInterface.higescore.create_highscore()
-        #User_interface.higescore.create_highscore()
 
     @staticmethod
     def find_player():
