@@ -32,7 +32,17 @@ class TestBot(unittest.TestCase):
 
     def test_want_to_bank(self):
         """Tests bot:want_to_bank function"""
-        pass
+        bot_level = 1
+        bot = Bot("Tester1", bot_level)
+        throws = 3
+        self.assertTrue(bot.want_to_bank(20, throws), (throws * 3) + bot_level)
+        bot_level = 2
+        bot = Bot("Tester2", bot_level)
+        throws = 5
+        self.assertTrue(
+            bot.want_to_bank(18, throws), (throws * 3) + bot_level)
+        self.assertFalse(
+            bot.want_to_bank(17, throws), (throws * 3) + bot_level)
 
     def test_get_random_botname(self):
         """Tests bot:get_random_botname function"""
