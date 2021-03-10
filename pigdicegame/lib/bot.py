@@ -1,6 +1,7 @@
 import random
 import os
 from player import Player
+import time
 
 
 class Bot(Player):
@@ -36,6 +37,7 @@ class Bot(Player):
         points = 0
         for dice_throws in range(self.calculate_amount_of_throws()):
             dice = self.throw_dice()
+            time.sleep(1)
             if dice == 1:
                 return 0
             points += dice
