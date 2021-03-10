@@ -1,5 +1,11 @@
 .ONESHELL:
 
+# Change this to be your variant of the python command
+#PYTHON = python3
+PYTHON = python
+#PYTHON = py
+
+
 VENV = .venv/Scripts/
 
 PYTHON:
@@ -11,7 +17,7 @@ PIP:
 # Install ----------------------------------------------------
 venv:
 	@echo Creating a virtual environment...
-	python3 -m venv .venv
+	$(PYTHON) -m venv .venv
 	@echo virtual environment was created!
 	@echo Now activate the virtual environment: '.venv/Scripts/activate'
 	@echo To install requirements after activation: 'make install'
