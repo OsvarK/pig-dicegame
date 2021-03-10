@@ -30,8 +30,10 @@ class UserInterface():
         bots = range(UserInterface.input_handler_int_range(
             "Enter the number of bots (min 1, max 4) you'd like to play " +
             "against: ", 1, 4))
-        for _ in bots:
-            players.append(bot.Bot(None), 1)
+
+        for i in bots:
+            players.append(bot.Bot(None, UserInterface.input_handler_int_range(
+            f"Enter the risk factor bot{i} (1 - 5), lower number equals less risk ", 1, 5)))
         new_game = game.Game(UserInterface)
         new_game.start_game(players)
 
@@ -140,10 +142,10 @@ class UserInterface():
         while True:
             try:
                 value = int(input(question))
-                if value in range(min_int, max_int):
+                if value in range(min_int, max_int + 1):
                     return value
                 else:
-                    print(f"Input has to in range of {min_int} - {max_int}")
+                    print(f"Input has to be in range of ({min_int} - {max_int})")
             except ValueError:
                 print("Input has to be an integer")
 
