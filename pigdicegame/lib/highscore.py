@@ -25,27 +25,26 @@ class Highscore():
         for player in self.players:
             new_score.append(player.__dict__)
         self.highscore = new_score
-        self.save_data()
+        self.save_data(os.path.dirname(os.path.realpath(__file__)) +
+                      "\\resources\\LocalHighscore.json")
 
-    def save_data(self):
+    def save_data(self, path):
         """Save data to storage"""
         try:
-            with open(os.path.dirname(os.path.realpath(__file__)) +
-                      "\\resources\\LocalHighscore.json", "w")as file:
+            with open(path, "w")as file:
                 json.dump(self.highscore, file, indent=2)
-        except FileNotFoundError:
-            print("Error: File Not Found")
+        except FileNotFoundError as e:
+            print("Error: File not found")
         except json.JSONDecodeError:
             pass
 
-    def load_data(self):
+    def load_data(self, path):
         """Fetch data from storage"""
         try:
-            with open(os.path.dirname(os.path.realpath(__file__)) +
-                      "\\resources\\LocalHighscore.json", "r")as file:
+            with open(path, "r")as file:
                 self.highscore = json.load(file)
-        except FileNotFoundError:
-            print("Error: File not found")
+        except FileNotFoundError as e:
+            raise FileNotFoundError from e
         except json.JSONDecodeError:
             pass
 
@@ -53,7 +52,8 @@ class Highscore():
         """ Creates players from the loaded data.
             Needs to be called as the game starts
         """
-        self.load_data()
+        self.load_data(os.path.dirname(os.path.realpath(__file__)) +
+                      "\\resources\\LocalHighscore.json")
         for entry in self.highscore:
             player = Player(entry["username"])
             player.score = entry["score"]
