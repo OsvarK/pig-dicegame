@@ -9,21 +9,20 @@ class UserInterface():
     This class controlls the input and output to the player.
     """
 
-    # Ref to higescore class
-    higescore = highscore.Highscore()
+    # Ref to highscore class
+    highscore = highscore.Highscore()
 
     @staticmethod
     def start():
         """Start of program"""
-        UserInterface.higescore = highscore.Highscore()
-        UserInterface.higescore.create_players()
+        UserInterface.highscore = highscore.Highscore()
+        UserInterface.highscore.create_players()
         UserInterface.main_menu()
-
 
     @staticmethod
     def game_setup_menu():
-        """Setups up the game, how many players and how many bots
-        and adds them to a list"""
+        """Set up the game, how many players and how many bots
+        and then adds them to a list"""
         players = []
         the_player = UserInterface.find_player()
         players.append(the_player)
@@ -33,14 +32,14 @@ class UserInterface():
 
         for i in bots:
             players.append(bot.Bot(None, UserInterface.input_handler_int_range(
-            f"Enter the risk factor bot{i} (1 - 5), lower number equals less risk ", 1, 5)))
+                f"Enter the risk factor bot{i} (1 - 5)," +
+                "the lower the number equals less risk ", 1, 5)))
         new_game = game.Game(UserInterface)
         new_game.start_game(players)
 
-
     @staticmethod
     def main_menu():
-        """Main menu of the program"""
+        """---Main Menu---"""
         option = UserInterface.input_handler_int_range(
             "1. Play game \n" +
             "2. Create player profile \n" +
@@ -55,7 +54,7 @@ class UserInterface():
         elif option == 3:
             UserInterface.change_player_profil()
         elif option == 4:
-            UserInterface.higescore.create_highscore()
+            UserInterface.highscore.create_highscore()
             quit()
 
     @staticmethod
@@ -72,7 +71,7 @@ class UserInterface():
                 dice_result = player_ref.throw_dice()
                 if dice_result == 1:
                     print("You rolled a 1. You lost your score" +
-                        " and it's the next players turn")
+                          " and it's the next players turn")
                     return 0
                 points_accumulated += dice_result
         return points_accumulated
@@ -86,14 +85,13 @@ class UserInterface():
                     input("Do you wish to throw the dice? (Y/N): "))
                 if user_input.upper() == "Y" or user_input.upper() == "N":
                     return user_input
-                print("You need to enter Y to throw the dice or N to hold")
+                print("Enter Y to throw the dice or N to hold")
             except ValueError:
                 print("You need to enter Y or N")
 
-
     @staticmethod
     def display_whos_turn(player_ref):
-        """Display whos turn it is"""
+        """Display whose turn it is"""
         print("New turn: " + player_ref.username)
 
     @staticmethod
@@ -106,16 +104,16 @@ class UserInterface():
                 return
             new_player = player.Player(in_from_client)
             exist_flag = False
-            print(UserInterface.higescore.players)
-            for p in UserInterface.higescore.players:
+            print(UserInterface.highscore.players)
+            for p in UserInterface.highscore.players:
                 if p.username == new_player.username:
                     print("Player with that name already exist!")
                     print("Type 'quit' to cancel")
                     exist_flag = True
             if not exist_flag:
                 break
-        UserInterface.higescore.players.append(new_player)
-        UserInterface.higescore.create_highscore()
+        UserInterface.highscore.players.append(new_player)
+        UserInterface.highscore.create_highscore()
         UserInterface.main_menu()
 
     @staticmethod
@@ -126,10 +124,10 @@ class UserInterface():
         try:
             user = str(input("Enter the username you wish to change to: "))
         except ValueError:
-            print("InputError in change_player_profil")
+            print("InputError in change_player_profile")
         player.username = user
-        UserInterface.higescore.create_highscore()
-        print("Username succesfully changed from " +
+        UserInterface.highscore.create_highscore()
+        print("Username successfully changed from " +
               f"{old_name} to {the_player.username}")
         UserInterface.main_menu()
 
@@ -145,7 +143,8 @@ class UserInterface():
                 if value in range(min_int, max_int + 1):
                     return value
                 else:
-                    print(f"Input has to be in range of ({min_int} - {max_int})")
+                    print(
+                        f"Input has to be in range of ({min_int} - {max_int})")
             except ValueError:
                 print("Input has to be an integer")
 
@@ -153,7 +152,7 @@ class UserInterface():
     def game_ended(player_ref):
         """Method that displays that the game ended"""
         print(player_ref.username + " won the game!")
-        UserInterface.higescore.create_highscore()
+        UserInterface.highscore.create_highscore()
 
     @staticmethod
     def find_player():
@@ -162,7 +161,7 @@ class UserInterface():
         while the_player is None:
             try:
                 user = str(input("Enter the username of your profile: "))
-                for profile in UserInterface.higescore.players:
+                for profile in UserInterface.highscore.players:
                     if profile.username.lower() == user.lower():
                         the_player = profile
                         return profile
