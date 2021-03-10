@@ -10,7 +10,7 @@ class UserInterface():
     """
 
     # Ref to higescore class
-    higescore = None
+    higescore = highscore.Highscore()
 
     @staticmethod
     def start():
@@ -153,10 +153,8 @@ class UserInterface():
     @staticmethod
     def game_ended(player_ref):
         """Method that displays that the game ended"""
-        # player is ref to winner
         print(player_ref.username + " won the game!")
         UserInterface.higescore.create_highscore()
-        #User_interface.higescore.create_highscore()
 
     @staticmethod
     def find_player():

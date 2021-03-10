@@ -21,15 +21,7 @@ class TestPlayer(unittest.TestCase):
         pass
 
     def test_is_higest_score_in_one_turn(self):
-        player = Player("Tester")
-        player.is_higest_score_in_one_turn([5, 5, 5, 6])
-        scoreSum = sum(player.higest_score_in_one_turn)
-        self.assertTrue(player.higest_score_in_one_turn == [5, 5, 5, 6])
-        self.assertTrue(scoreSum == sum([5, 5, 5, 6]))
-        player.is_higest_score_in_one_turn([5, 2, 6])
-        scoreSum = sum(player.higest_score_in_one_turn)
-        self.assertFalse(player.higest_score_in_one_turn == [5, 2, 6])
-        self.assertFalse(scoreSum == sum([5, 2, 6]))
+        pass
 
     def test_is_fastest_win(self):
         player = Player("Tester")
