@@ -8,7 +8,6 @@ import player
 
 
 class TestHighscore(unittest.TestCase):
-#    # TODO: Skriv testkod för highscore
     def test_load_players(self):
         """Tests create_players()"""
         scores = highscore.Highscore()
