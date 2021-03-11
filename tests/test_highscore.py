@@ -33,3 +33,7 @@ class TestHighscore(unittest.TestCase):
         with self.assertRaises(FileNotFoundError):
             h.load_data("test.txt")
             
+    def test_see_highscore(self):
+        scores = highscore.Highscore()
+        value = scores.show_highscore()
+        self.assertTrue(value, "Failed: show_highscore")

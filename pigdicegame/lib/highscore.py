@@ -70,4 +70,5 @@ class Highscore():
         for entry in sorted_list:
             print(f"{entry.username}, Score: {entry.score}")
         print("\n*********************\n")
+        return True
         

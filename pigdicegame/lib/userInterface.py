@@ -111,7 +111,6 @@ class UserInterface():
                 return
             new_player = player.Player(in_from_client)
             exist_flag = False
-            print(UserInterface.highscore.players)
             for p in UserInterface.highscore.players:
                 if p.username == new_player.username:
                     print("Player with that name already exist!")
