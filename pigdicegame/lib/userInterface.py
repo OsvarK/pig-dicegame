@@ -131,7 +131,7 @@ class UserInterface():
             user = str(input("Enter the username you wish to change to: "))
         except ValueError:
             print("InputError in change_player_profile")
-        player.username = user
+        the_player.username = user
         UserInterface.highscore.create_highscore()
         print("Username successfully changed from " +
               f"{old_name} to {the_player.username}")
