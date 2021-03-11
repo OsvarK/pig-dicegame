@@ -60,3 +60,14 @@ class Highscore():
             player.higest_score_in_one_turn = entry["higest_score_in_one_turn"]
             player.fastest_win = entry["fastest_win"]
             self.players.append(player)
+
+    def show_highscore(self):
+        """ Prints the current highscore """
+        if not self.players: 
+            self.create_players()
+        sorted_list = sorted(self.players, key = lambda player: player.score)
+        print("\n***** Highscore *****\n")
+        for entry in sorted_list:
+            print(f"{entry.username}, Score: {entry.score}")
+        print("\n*********************\n")
+        

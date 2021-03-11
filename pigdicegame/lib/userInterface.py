@@ -47,8 +47,9 @@ class UserInterface():
             "1. Play game \n" +
             "2. Create player profile \n" +
             "3. Change player profile \n" +
-            "4. Exit \n",
-            1, 4
+            "4. See highscore \n" +
+            "5. Exit \n",
+            1, 5
         )
         if option == 1:
             UserInterface.game_setup_menu()
@@ -57,6 +58,9 @@ class UserInterface():
         elif option == 3:
             UserInterface.change_player_profil()
         elif option == 4:
+            UserInterface.highscore.show_highscore()
+            UserInterface.main_menu()
+        elif option == 5:
             UserInterface.highscore.create_highscore()
             quit()
 
