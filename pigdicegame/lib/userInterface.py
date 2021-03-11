@@ -24,15 +24,18 @@ class UserInterface():
         """Set up the game, how many players and how many bots
         and then adds them to a list"""
         players = []
-        the_player = UserInterface.find_player()
-        players.append(the_player)
+        for i in range(UserInterface.input_handler_int_range(
+            "Enter the number of PLAYERS (min 1, max 4) you'd like to play " +
+            "with: ", 1, 4)):
+            print(f"For player {i} --------------------------------------------")
+            players.append(UserInterface.find_player())
         bots = range(UserInterface.input_handler_int_range(
-            "Enter the number of bots (min 1, max 4) you'd like to play " +
+            "Enter the number of BOTS (min 1, max 4) you'd like to play " +
             "against: ", 1, 4))
 
         for i in bots:
             players.append(bot.Bot(None, UserInterface.input_handler_int_range(
-                f"Enter the risk factor bot{i} (1 - 5)," +
+                f"Enter the risk factor bot [{i}] (1 - 5)," +
                 "the lower the number equals less risk ", 1, 5)))
         new_game = game.Game(UserInterface)
         new_game.start_game(players)
