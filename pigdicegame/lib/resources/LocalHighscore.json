@@ -12,5 +12,12 @@
     "wins": 0,
     "higest_score_in_one_turn": 0,
     "fastest_win": 0
+  },
+  {
+    "score": 0,
+    "username": "Oscar",
+    "wins": 0,
+    "higest_score_in_one_turn": 0,
+    "fastest_win": 0
   }
 ]
