@@ -8,7 +8,6 @@ import player
 
 
 class TestHighscore(unittest.TestCase):
-#    # TODO: Skriv testkod för highscore
     def test_load_players(self):
         """Tests create_players()"""
         scores = highscore.Highscore()
@@ -32,3 +31,8 @@ class TestHighscore(unittest.TestCase):
         h = highscore.Highscore()
         with self.assertRaises(FileNotFoundError):
             h.load_data("test.txt")
+            
+    def test_see_highscore(self):
+        scores = highscore.Highscore()
+        value = scores.show_highscore()
+        self.assertTrue(value, "Failed: show_highscore")

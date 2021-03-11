@@ -24,15 +24,18 @@ class UserInterface():
         """Set up the game, how many players and how many bots
         and then adds them to a list"""
         players = []
-        the_player = UserInterface.find_player()
-        players.append(the_player)
+        for i in range(UserInterface.input_handler_int_range(
+            "Enter the number of PLAYERS (min 1, max 4) you'd like to play " +
+            "with: ", 1, 4)):
+            print(f"For player {i} --------------------------------------------")
+            players.append(UserInterface.find_player())
         bots = range(UserInterface.input_handler_int_range(
-            "Enter the number of bots (min 1, max 4) you'd like to play " +
+            "Enter the number of BOTS (min 1, max 4) you'd like to play " +
             "against: ", 1, 4))
 
         for i in bots:
             players.append(bot.Bot(None, UserInterface.input_handler_int_range(
-                f"Enter the risk factor bot{i} (1 - 5)," +
+                f"Enter the risk factor bot [{i}] (1 - 5)," +
                 "the lower the number equals less risk ", 1, 5)))
         new_game = game.Game(UserInterface)
         new_game.start_game(players)
@@ -44,8 +47,9 @@ class UserInterface():
             "1. Play game \n" +
             "2. Create player profile \n" +
             "3. Change player profile \n" +
-            "4. Exit \n",
-            1, 4
+            "4. See highscore \n" +
+            "5. Exit \n",
+            1, 5
         )
         if option == 1:
             UserInterface.game_setup_menu()
@@ -54,6 +58,9 @@ class UserInterface():
         elif option == 3:
             UserInterface.change_player_profil()
         elif option == 4:
+            UserInterface.highscore.show_highscore()
+            UserInterface.main_menu()
+        elif option == 5:
             UserInterface.highscore.create_highscore()
             quit()
 
@@ -104,7 +111,6 @@ class UserInterface():
                 return
             new_player = player.Player(in_from_client)
             exist_flag = False
-            print(UserInterface.highscore.players)
             for p in UserInterface.highscore.players:
                 if p.username == new_player.username:
                     print("Player with that name already exist!")
@@ -125,7 +131,7 @@ class UserInterface():
             user = str(input("Enter the username you wish to change to: "))
         except ValueError:
             print("InputError in change_player_profile")
-        player.username = user
+        the_player.username = user
         UserInterface.highscore.create_highscore()
         print("Username successfully changed from " +
               f"{old_name} to {the_player.username}")
@@ -147,6 +153,7 @@ class UserInterface():
                         f"Input has to be in range of ({min_int} - {max_int})")
             except ValueError:
                 print("Input has to be an integer")
+                raise ValueError
 
     @staticmethod
     def game_ended(player_ref):
