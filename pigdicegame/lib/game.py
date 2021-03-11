@@ -1,3 +1,5 @@
+import random
+import time
 from bot import Bot
 
 
@@ -22,11 +24,13 @@ class Game:
         """This function controlls the flow of the game (the game loop)
         arg (list:player): list of players
         """
+        random.shuffle(players)
         player_index = 0
         turn_cycle = 0
         while True:
             player = players[player_index]
             self.user_interface.display_whos_turn(player)
+            time.sleep(1)
             if isinstance(player, Bot):
                 points = player.get_dice_throws()
             else:

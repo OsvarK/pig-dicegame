@@ -9,7 +9,8 @@ import game
 
 class TestGame(unittest.TestCase):
 
-    def test_BotGame(self):
+    def test_bot_game(self):
+        """Tests the whole game when its only runned by bots"""
         the_game = game.Game(userInterface.UserInterface)
         players = []
         players.append(Bot("Tester 1", 1))
