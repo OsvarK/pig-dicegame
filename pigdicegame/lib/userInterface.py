@@ -147,6 +147,7 @@ class UserInterface():
                         f"Input has to be in range of ({min_int} - {max_int})")
             except ValueError:
                 print("Input has to be an integer")
+                raise ValueError
 
     @staticmethod
     def game_ended(player_ref):

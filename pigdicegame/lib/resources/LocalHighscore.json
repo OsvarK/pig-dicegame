@@ -2,15 +2,8 @@
   {
     "score": 0,
     "username": "Swezoo",
-    "wins": 0,
+    "wins": 2,
     "higest_score_in_one_turn": 60,
     "fastest_win": 4
-  },
-  {
-    "score": 0,
-    "username": "Hampus",
-    "wins": 0,
-    "higest_score_in_one_turn": 0,
-    "fastest_win": 0
   }
 ]

@@ -32,3 +32,4 @@ class TestHighscore(unittest.TestCase):
         h = highscore.Highscore()
         with self.assertRaises(FileNotFoundError):
             h.load_data("test.txt")
+            
