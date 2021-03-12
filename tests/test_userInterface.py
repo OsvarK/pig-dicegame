@@ -1,16 +1,16 @@
+from player import Player
+from userInterface import UserInterface
 import unittest
 import sys
 import unittest.mock
 from unittest.mock import patch
+import test_highscore
 
 sys.path.append("pigdicegame/lib")
 
-from userInterface import UserInterface
-from player import Player
-
 
 class TestUserInterface(unittest.TestCase):
-    # inspiration from user gawel at 
+    # inspiration from user gawel at
     # https://stackoverflow.com/questions/21046717/python-mocking-raw-input-in-unittests
     def test_input_handler_int_range_in_range(self):
         with unittest.mock.patch("builtins.input", return_value=2):
@@ -33,5 +33,14 @@ class TestUserInterface(unittest.TestCase):
         UserInterface.display_whos_turn(ply)
         mock_print.assert_called_with("New turn: " + ply.username)
 
-    def test_main_menu(self):
-        UserInterface.main_menu()
+    @patch('builtins.input', side_effect=["2", "Tomas", "3", "1", "Tomas", "Jörgen", "1", "1", "Jörgen", "1", "1", "FUSK"])
+    def test_game_session(self, mock_print):
+        output = []
+        UserInterface.start()
+        #testgame.assert_called_with(print('Jörgen won the game!'))
+        assert output == [
+            "1. Play game \n" +
+            "2. Create player profile \n" +
+            "3. Change player profile \n" +
+            "4. See highscore \n" +
+            "5. Exit \n", "Hej"]

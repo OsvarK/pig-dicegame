@@ -26,8 +26,9 @@ class UserInterface():
         players = []
         for i in range(UserInterface.input_handler_int_range(
             "Enter the number of PLAYERS (min 1, max 4) you'd like to play " +
-            "with: ", 1, 4)):
-            print(f"For player {i} --------------------------------------------")
+                "with: ", 1, 4)):
+            print(
+                f"For player {i} --------------------------------------------")
             players.append(UserInterface.find_player())
         bots = range(UserInterface.input_handler_int_range(
             "Enter the number of BOTS (min 1, max 4) you'd like to play " +
@@ -74,7 +75,7 @@ class UserInterface():
         points_accumulated = 0
         while choice.upper() != "N":
             choice = UserInterface.throw_dice_input()
-            if choice.upper() == "fusk":
+            if choice.upper() == "FUSK":
                 return 1000
             if choice.upper() == "Y":
                 dice_result = player_ref.throw_dice()
@@ -92,7 +93,7 @@ class UserInterface():
             try:
                 user_input = str(
                     input("Do you wish to throw the dice? (Y/N): "))
-                if user_input.upper() == "Y" or user_input.upper() == "N" or user_input.upper() == "fusk":
+                if user_input.upper() == "Y" or user_input.upper() == "N" or user_input.upper() == "FUSK":
                     return user_input
                 print("Enter Y to throw the dice or N to hold")
             except ValueError:
