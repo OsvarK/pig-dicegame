@@ -1,7 +1,9 @@
+"""Module that has Player class inside"""
+
 import random
 
 
-class Player(object):
+class Player():
     """ Class represents a player. """
     def __init__(self, username):
         super().__init__()

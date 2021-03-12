@@ -47,8 +47,9 @@ class UserInterface():
             "1. Play game \n" +
             "2. Create player profile \n" +
             "3. Change player profile \n" +
-            "4. Exit \n",
-            1, 4
+            "4. See highscore \n" +
+            "5. Exit \n",
+            1, 5
         )
         if option == 1:
             UserInterface.game_setup_menu()
@@ -57,6 +58,9 @@ class UserInterface():
         elif option == 3:
             UserInterface.change_player_profil()
         elif option == 4:
+            UserInterface.highscore.show_highscore()
+            UserInterface.main_menu()
+        elif option == 5:
             UserInterface.highscore.create_highscore()
             quit()
 
@@ -107,7 +111,6 @@ class UserInterface():
                 return
             new_player = player.Player(in_from_client)
             exist_flag = False
-            print(UserInterface.highscore.players)
             for p in UserInterface.highscore.players:
                 if p.username == new_player.username:
                     print("Player with that name already exist!")
@@ -128,7 +131,7 @@ class UserInterface():
             user = str(input("Enter the username you wish to change to: "))
         except ValueError:
             print("InputError in change_player_profile")
-        player.username = user
+        the_player.username = user
         UserInterface.highscore.create_highscore()
         print("Username successfully changed from " +
               f"{old_name} to {the_player.username}")
@@ -148,8 +151,9 @@ class UserInterface():
                 else:
                     print(
                         f"Input has to be in range of ({min_int} - {max_int})")
-            except ValueError:
+            except ValueError as ex:
                 print("Input has to be an integer")
+                raise ValueError from ex
 
     @staticmethod
     def game_ended(player_ref):

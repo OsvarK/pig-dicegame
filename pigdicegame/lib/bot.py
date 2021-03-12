@@ -1,3 +1,5 @@
+"""Module with Bot inside it"""
+
 import random
 import os
 from player import Player
@@ -20,6 +22,7 @@ class Bot(Player):
                 os.path.dirname(os.path.realpath(__file__)) +
                 "\\resources\\botnames.txt")
         Player.__init__(self, username)
+        self.test_mode = False
 
     def calculate_amount_of_throws(self):
         """Decide how many throws the bot wants to do"""
@@ -37,7 +40,8 @@ class Bot(Player):
         points = 0
         for dice_throws in range(self.calculate_amount_of_throws()):
             dice = self.throw_dice()
-            time.sleep(1)
+            if not self.test_mode:
+                time.sleep(1)
             if dice == 1:
                 return 0
             points += dice
@@ -56,5 +60,5 @@ class Bot(Player):
             with open(path, "r") as file:
                 names = file.readlines()
                 return names[random.randint(0, len(names) - 1)].strip('\n')
-        except FileNotFoundError as e:
-            raise FileNotFoundError from e
+        except FileNotFoundError as ex:
+            raise FileNotFoundError from ex

@@ -59,11 +59,11 @@ doc:
 	mkdir api
 	cd ..
 	cd .\pigdicegame
-	PYTHON -m pydoc -w .\main.py
-	move .\main.html ..\docs\api
 	cd .\lib
 	PYTHON -m pydoc -w .\__init__.py
 	move .\__init__.html ..\..\docs\api
+	PYTHON -m pydoc -w .\main.py
+	move .\main.html ..\..\docs\api
 	PYTHON -m pydoc -w .\bot.py
 	move .\bot.html ..\..\docs\api
 	PYTHON -m pydoc -w .\game.py
@@ -72,6 +72,8 @@ doc:
 	move .\player.html ..\..\docs\api
 	PYTHON -m pydoc -w .\userInterface.py
 	move .\userInterface.html ..\..\docs\api
+	PYTHON -m pydoc -w .\highscore.py
+	move .\highscore.html ..\..\docs\api
 
 uml:
 	# Install 'pip install pylint' as admin in none venv.
