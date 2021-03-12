@@ -49,8 +49,9 @@ class UserInterface():
             "2. Create player profile \n" +
             "3. Change player profile \n" +
             "4. See highscore \n" +
-            "5. Exit \n",
-            1, 5
+            "5. See rules \n" +
+            "6. Exit \n",
+            1, 6
         )
         if option == 1:
             UserInterface.game_setup_menu()
@@ -62,6 +63,8 @@ class UserInterface():
             UserInterface.highscore.show_highscore()
             UserInterface.main_menu()
         elif option == 5:
+            UserInterface.display_rules()
+        elif option == 6:
             UserInterface.highscore.create_highscore()
             quit()
 
@@ -103,6 +106,17 @@ class UserInterface():
     def display_whos_turn(player_ref):
         """Display whose turn it is"""
         print("New turn: " + player_ref.username)
+
+    @staticmethod
+    def display_rules():
+        """Display rules turn it is"""
+        print("The rules are as following:\n" +
+              "First to 100 points wins." +
+              "One player rolls the dice, if that player rolls anything but a one," +
+              "they may either bank their score or continue rolling the dice." +
+                "If that player rolls a one, the accumulated score is terminated for" +
+                "that round and the turn is passed to the next player.\n" +
+                "Good luck!")
 
     @staticmethod
     def create_player_profile():
@@ -163,6 +177,7 @@ class UserInterface():
         """Method that displays that the game ended"""
         print(player_ref.username + " won the game!")
         UserInterface.highscore.create_highscore()
+        UserInterface.main_menu()
 
     @staticmethod
     def find_player():
