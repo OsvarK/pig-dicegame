@@ -117,7 +117,7 @@ class UserInterface():
               "First to 100 points wins.\n" +
               "One player rolls the dice, if that player rolls anything but a one," +
               "they may either bank their score or continue rolling the dice.\n" +
-                "If that player rolls a one, the accumulated score is terminated for" +
+                "If that player rolls a one, the accumulated score is terminated for " +
                 "that round and the turn is passed to the next player.\n" +
                 "Good luck!\n")
 
