@@ -176,11 +176,12 @@ class UserInterface():
                 raise ValueError from ex
 
     @staticmethod
-    def game_ended(player_ref):
+    def game_ended(player_ref, is_test):
         """Method that displays that the game ended"""
         print(player_ref.username + " won the game!")
         UserInterface.highscore.create_highscore()
-        UserInterface.main_menu()
+        if not is_test:
+            UserInterface.main_menu()
 
     @staticmethod
     def find_player():
