@@ -33,14 +33,8 @@ class TestUserInterface(unittest.TestCase):
         UserInterface.display_whos_turn(ply)
         mock_print.assert_called_with("New turn: " + ply.username)
 
-    @patch('builtins.input', side_effect=["2", "Tomas", "3", "1", "Tomas", "Jörgen", "1", "1", "Jörgen", "1", "1", "FUSK"])
+    @patch('builtins.print')
     def test_game_session(self, mock_print):
-        output = []
-        UserInterface.start()
-        #testgame.assert_called_with(print('Jörgen won the game!'))
-        assert output == [
-            "1. Play game \n" +
-            "2. Create player profile \n" +
-            "3. Change player profile \n" +
-            "4. See highscore \n" +
-            "5. Exit \n", "Hej"]
+        with unittest.mock.patch('builtins.input', side_effect=["2", "Tomas", "3", "1", "Tomas", "Jörgen", "1", "1", "Jörgen", "1", "1", "FUSK"]):
+            UserInterface.start()
+            mock_print.assert_called_with("Jörgen won the game!")
