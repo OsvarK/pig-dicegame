@@ -30,13 +30,15 @@ class Highscore():
 
     def save_data(self, path):
         """Save data to storage"""
-        try:
-            with open(path, "w")as file:
-                json.dump(self.highscore, file, indent=2)
-        except FileNotFoundError:
+        if os.path.exists(path):
+            try:
+                with open(path, "w")as file:
+                    json.dump(self.highscore, file, indent=2)
+            except json.JSONDecodeError:
+                pass
+        else:
             print("Error: File not found")
-        except json.JSONDecodeError:
-            pass
+            raise FileNotFoundError
 
     def load_data(self, path):
         """Fetch data from storage"""
