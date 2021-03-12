@@ -64,6 +64,7 @@ class UserInterface():
             UserInterface.main_menu()
         elif option == 5:
             UserInterface.display_rules()
+            UserInterface.main_menu()
         elif option == 6:
             UserInterface.highscore.create_highscore()
             quit()
@@ -112,13 +113,13 @@ class UserInterface():
     @staticmethod
     def display_rules():
         """Display rules turn it is"""
-        print("The rules are as following:\n" +
-              "First to 100 points wins." +
+        print("\nThe rules are as following:\n" +
+              "First to 100 points wins.\n" +
               "One player rolls the dice, if that player rolls anything but a one," +
-              "they may either bank their score or continue rolling the dice." +
-                "If that player rolls a one, the accumulated score is terminated for" +
+              "they may either bank their score or continue rolling the dice.\n" +
+                "If that player rolls a one, the accumulated score is terminated for " +
                 "that round and the turn is passed to the next player.\n" +
-                "Good luck!")
+                "Good luck!\n")
 
     @staticmethod
     def create_player_profile():
