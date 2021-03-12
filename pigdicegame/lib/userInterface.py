@@ -113,7 +113,7 @@ class UserInterface():
     @staticmethod
     def display_rules():
         """Display rules turn it is"""
-        print("The rules are as following:\n" +
+        print("\nThe rules are as following:\n" +
               "First to 100 points wins.\n" +
               "One player rolls the dice, if that player rolls anything but a one," +
               "they may either bank their score or continue rolling the dice.\n" +
