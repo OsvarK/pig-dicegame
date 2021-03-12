@@ -49,8 +49,9 @@ class UserInterface():
             "2. Create player profile \n" +
             "3. Change player profile \n" +
             "4. See highscore \n" +
-            "5. Exit \n",
-            1, 5
+            "5. See rules \n" +
+            "6. Exit \n",
+            1, 6
         )
         if option == 1:
             UserInterface.game_setup_menu()
@@ -62,6 +63,9 @@ class UserInterface():
             UserInterface.highscore.show_highscore()
             UserInterface.main_menu()
         elif option == 5:
+            UserInterface.display_rules()
+            UserInterface.main_menu()
+        elif option == 6:
             UserInterface.highscore.create_highscore()
             quit()
 
@@ -77,6 +81,8 @@ class UserInterface():
             choice = UserInterface.throw_dice_input()
             if choice.upper() == "FUSK":
                 return 1000
+            if choice.upper() == "QUIT":
+                UserInterface.main_menu()
             if choice.upper() == "Y":
                 dice_result = player_ref.throw_dice()
                 if dice_result == 1:
@@ -92,8 +98,8 @@ class UserInterface():
         while True:
             try:
                 user_input = str(
-                    input("Do you wish to throw the dice? (Y/N): "))
-                if user_input.upper() == "Y" or user_input.upper() == "N" or user_input.upper() == "FUSK":
+                    input("Do you wish to throw the dice? (Y/N), quit to quit current game: "))
+                if user_input.upper() == "Y" or user_input.upper() == "N" or user_input.upper() == "FUSK" or user_input.upper() == "QUIT":
                     return user_input
                 print("Enter Y to throw the dice or N to hold")
             except ValueError:
@@ -103,6 +109,17 @@ class UserInterface():
     def display_whos_turn(player_ref):
         """Display whose turn it is"""
         print("New turn: " + player_ref.username)
+
+    @staticmethod
+    def display_rules():
+        """Display rules turn it is"""
+        print("\nThe rules are as following:\n" +
+              "First to 100 points wins.\n" +
+              "One player rolls the dice, if that player rolls anything but a one," +
+              "they may either bank their score or continue rolling the dice.\n" +
+                "If that player rolls a one, the accumulated score is terminated for " +
+                "that round and the turn is passed to the next player.\n" +
+                "Good luck!\n")
 
     @staticmethod
     def create_player_profile():
@@ -163,6 +180,7 @@ class UserInterface():
         """Method that displays that the game ended"""
         print(player_ref.username + " won the game!")
         UserInterface.highscore.create_highscore()
+        UserInterface.main_menu()
 
     @staticmethod
     def find_player():
@@ -177,5 +195,7 @@ class UserInterface():
                         return profile
                 if the_player is None:
                     print("Player profile cannot be found. Please try again")
+                    if input("or back to go back to main menu: ") == "back":
+                        UserInterface.main_menu()
             except ValueError:
                 print("Error in find_player")

@@ -6,3 +6,5 @@
 
 ## Version 1.2.0
     * Can now view your highscore.
+    * Show score
+    * Show rules

@@ -1,7 +1,21 @@
 [
   {
+    "score": 1001,
+    "username": "Bilbo",
+    "wins": 0,
+    "higest_score_in_one_turn": 1000,
+    "fastest_win": 0
+  },
+  {
+    "score": 999,
+    "username": "Sam",
+    "wins": 0,
+    "higest_score_in_one_turn": 999,
+    "fastest_win": 0
+  },
+  {
     "score": 1000,
-    "username": "J\u00f6rgen",
+    "username": "Boromir",
     "wins": 0,
     "higest_score_in_one_turn": 1000,
     "fastest_win": 0
