@@ -10,6 +10,7 @@ class Game:
     """
     def __init__(self, user_interface):
         self.user_interface = user_interface
+        self.test_mode = False
 
     def start_game(self, players):
         """Takes list of players and starts the gameloop.
@@ -30,7 +31,8 @@ class Game:
         while True:
             player = players[player_index]
             self.user_interface.display_whos_turn(player)
-            time.sleep(1)
+            if not self.test_mode:
+                time.sleep(1)
             if isinstance(player, Bot):
                 points = player.get_dice_throws()
             else:
