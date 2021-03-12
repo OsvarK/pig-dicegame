@@ -26,14 +26,14 @@ class Highscore():
             new_score.append(player.__dict__)
         self.highscore = new_score
         self.save_data(os.path.dirname(os.path.realpath(__file__)) +
-                      "\\resources\\LocalHighscore.json")
+                       "\\resources\\LocalHighscore.json")
 
     def save_data(self, path):
         """Save data to storage"""
         try:
             with open(path, "w")as file:
                 json.dump(self.highscore, file, indent=2)
-        except FileNotFoundError as e:
+        except FileNotFoundError:
             print("Error: File not found")
         except json.JSONDecodeError:
             pass
@@ -43,8 +43,8 @@ class Highscore():
         try:
             with open(path, "r")as file:
                 self.highscore = json.load(file)
-        except FileNotFoundError as e:
-            raise FileNotFoundError from e
+        except FileNotFoundError as exception:
+            raise FileNotFoundError from exception
         except json.JSONDecodeError:
             pass
 
@@ -53,7 +53,7 @@ class Highscore():
             Needs to be called as the game starts
         """
         self.load_data(os.path.dirname(os.path.realpath(__file__)) +
-                      "\\resources\\LocalHighscore.json")
+                       "\\resources\\LocalHighscore.json")
         for entry in self.highscore:
             player = Player(entry["username"])
             player.score = entry["score"]
@@ -63,12 +63,11 @@ class Highscore():
 
     def show_highscore(self):
         """ Prints the current highscore """
-        if not self.players: 
+        if not self.players:
             self.create_players()
-        sorted_list = sorted(self.players, key = lambda player: player.score)
+        sorted_list = sorted(self.players, key=lambda player: player.score)
         print("\n***** Highscore *****\n")
         for entry in sorted_list:
             print(f"{entry.username}, Score: {entry.score}")
         print("\n*********************\n")
         return True
-        

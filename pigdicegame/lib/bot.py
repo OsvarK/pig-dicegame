@@ -1,3 +1,5 @@
+"""Module with Bot inside it"""
+
 import random
 import os
 from player import Player
@@ -58,5 +60,5 @@ class Bot(Player):
             with open(path, "r") as file:
                 names = file.readlines()
                 return names[random.randint(0, len(names) - 1)].strip('\n')
-        except FileNotFoundError as e:
-            raise FileNotFoundError from e
+        except FileNotFoundError as ex:
+            raise FileNotFoundError from ex

@@ -1,3 +1,5 @@
+"""Module that has Game class inside"""
+
 import random
 import time
 from bot import Bot
