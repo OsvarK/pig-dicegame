@@ -192,5 +192,7 @@ class UserInterface():
                         return profile
                 if the_player is None:
                     print("Player profile cannot be found. Please try again")
+                    if input("or back to go back to main menu: ") == "back":
+                        UserInterface.main_menu()
             except ValueError:
                 print("Error in find_player")
