@@ -5,5 +5,12 @@
     "wins": 0,
     "higest_score_in_one_turn": 1000,
     "fastest_win": 0
+  },
+  {
+    "score": 1000,
+    "username": "oscar",
+    "wins": 0,
+    "higest_score_in_one_turn": 1000,
+    "fastest_win": 0
   }
 ]

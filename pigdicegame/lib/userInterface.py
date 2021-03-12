@@ -80,6 +80,8 @@ class UserInterface():
             choice = UserInterface.throw_dice_input()
             if choice.upper() == "FUSK":
                 return 1000
+            if choice.upper() == "QUIT":
+                UserInterface.main_menu()
             if choice.upper() == "Y":
                 dice_result = player_ref.throw_dice()
                 if dice_result == 1:
@@ -95,8 +97,8 @@ class UserInterface():
         while True:
             try:
                 user_input = str(
-                    input("Do you wish to throw the dice? (Y/N): "))
-                if user_input.upper() == "Y" or user_input.upper() == "N" or user_input.upper() == "FUSK":
+                    input("Do you wish to throw the dice? (Y/N), quit to quit current game: "))
+                if user_input.upper() == "Y" or user_input.upper() == "N" or user_input.upper() == "FUSK" or user_input.upper() == "QUIT":
                     return user_input
                 print("Enter Y to throw the dice or N to hold")
             except ValueError:
