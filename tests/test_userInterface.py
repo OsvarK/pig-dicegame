@@ -21,9 +21,14 @@ class TestUserInterface(unittest.TestCase):
             with self.assertRaises(ValueError):
                 UserInterface.input_handler_int_range("enter int", 1, 4)
 
-    def test_throw_dice_loop(self):
+    @patch('builtins.input', side_effect=["Y", "Y", "Y", "N"])
+    def test_throw_dice_loop(self, mock_print):
         """Unittest for UI:throw_dice_loop"""
         ply = Player("throw_dice_loop_tester")
-        with unittest.mock.patch("builtins.input", side_effect=[
-                                 "Y", "Y", "Y", "N"]):
-            self.assertIsInstance(UserInterface.throw_dice_loop(ply), int)
+        self.assertIsInstance(UserInterface.throw_dice_loop(ply), int)
+
+    @patch('builtins.print')
+    def test_display_whos_turn(self, mock_print):
+        ply = Player("joe")
+        UserInterface.display_whos_turn(ply)
+        mock_print.assert_called_with("New turn: " + ply.username)
