@@ -32,3 +32,6 @@ class TestUserInterface(unittest.TestCase):
         ply = Player("joe")
         UserInterface.display_whos_turn(ply)
         mock_print.assert_called_with("New turn: " + ply.username)
+
+    def test_main_menu(self):
+        UserInterface.main_menu()

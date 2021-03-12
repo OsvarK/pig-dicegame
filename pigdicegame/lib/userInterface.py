@@ -74,6 +74,8 @@ class UserInterface():
         points_accumulated = 0
         while choice.upper() != "N":
             choice = UserInterface.throw_dice_input()
+            if choice.upper() == "fusk":
+                return 1000
             if choice.upper() == "Y":
                 dice_result = player_ref.throw_dice()
                 if dice_result == 1:
@@ -90,7 +92,7 @@ class UserInterface():
             try:
                 user_input = str(
                     input("Do you wish to throw the dice? (Y/N): "))
-                if user_input.upper() == "Y" or user_input.upper() == "N":
+                if user_input.upper() == "Y" or user_input.upper() == "N" or user_input.upper() == "fusk":
                     return user_input
                 print("Enter Y to throw the dice or N to hold")
             except ValueError:
