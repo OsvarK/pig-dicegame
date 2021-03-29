@@ -84,3 +84,5 @@ When you have chocolatey installed you can easily install graphviz and make.
 choco install make
 choco install graphviz
 ```
+
+#### Application is built for windows, havent been tested on linux
